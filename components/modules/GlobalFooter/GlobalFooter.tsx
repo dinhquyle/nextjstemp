@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Link from "next/link";
 import styles from "./GlobalFooter.module.scss";
 import Image from "next/image";
 
@@ -31,14 +32,16 @@ function GlobalFooter({}: TGHProps): JSX.Element {
       <footer className={`${styles.lFooter} ${styles.cImgAni}`}>
         <div className={styles.container}>
           <div className={styles.lFLogo}>
-            <a href="/">
-              <Image
-                src="/images/common/footer/f_logo01.png"
-                alt="井元産業株式会社"
-                width={162}
-                height={148}
-              />
-            </a>
+            <Link href="/">
+              <a>
+                <Image
+                  src="/images/common/footer/f_logo01.png"
+                  alt="井元産業株式会社"
+                  width={162}
+                  height={148}
+                />
+              </a>
+            </Link>
           </div>
           <p className={styles.lFAddress}>
             〒462-0819　
@@ -66,7 +69,9 @@ function GlobalFooter({}: TGHProps): JSX.Element {
               <p className={styles.lFGnavi__ttl}>井元産業について</p>
               <ul className={styles.lFGnavi__lst}>
                 <li>
-                  <a href="/">ホーム</a>
+                  <Link href="/">
+                    <a>ホーム</a>
+                  </Link>
                 </li>
                 <li>
                   <a href="/about/">会社概要</a>
@@ -148,9 +153,9 @@ function GlobalFooter({}: TGHProps): JSX.Element {
             <a href="/en/">EN</a>
           </li>
           <li>
-            <a className={styles.isActive} href="/">
-              JA
-            </a>
+            <Link href="/">
+              <a className={styles.isActive}>JA</a>
+            </Link>
           </li>
         </ul>
       </div>

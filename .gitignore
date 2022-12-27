@@ -13,6 +13,17 @@
 # next.js
 /.next/
 /out/
+/.vscode/
+/.babelrc/
+yarn.lock
+jest.setup.ts
+jest.config.js
+tsconfig.json
+next-env.d.ts
+next.config.js
+.eslintrc.json
+.prettierrc.json
+cypress.json
 
 # production
 /build
