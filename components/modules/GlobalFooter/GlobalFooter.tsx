@@ -1,48 +1,60 @@
 import { useEffect } from "react";
 import styles from "./GlobalFooter.module.scss";
-import Image from 'next/image';
+import Image from "next/image";
 
 type TGHProps = {
   children?: React.ReactNode;
 };
 function GlobalFooter({}: TGHProps): JSX.Element {
-
-  useEffect(() => {   
+  useEffect(() => {
     window.addEventListener(`load`, smoothScroll, false);
-    return
+    return;
   }, []);
-  
+
   const smoothScroll = () => {
-    document.querySelectorAll(`a[href^="#"]`).forEach(anchor => {
+    document.querySelectorAll(`a[href^="#"]`).forEach((anchor) => {
       anchor.addEventListener(`click`, function (e) {
         e.preventDefault();
-        const target = e.target as HTMLInputElement;
-        console.log(target.hash)
+        //const target = e.target as HTMLInputElement;
 
-        if( e.target != null){
-          const _anchor = target.hash;
-          document.querySelector(_anchor).scrollIntoView({
-            behavior: `smooth`
-          });
-        }
+        // if( e.target != null){
+        //   const _anchor = target.hash;
+        //   document.querySelector(_anchor).scrollIntoView({
+        //     behavior: `smooth`
+        //   });
+        // }
       });
     });
-  }
-  return(
+  };
+  return (
     <>
       <footer className={`${styles.lFooter} ${styles.cImgAni}`}>
         <div className={styles.container}>
           <div className={styles.lFLogo}>
             <a href="/">
-              <Image src="/images/common/footer/f_logo01.png" alt="井元産業株式会社" width={162} height={148} />
+              <Image
+                src="/images/common/footer/f_logo01.png"
+                alt="井元産業株式会社"
+                width={162}
+                height={148}
+              />
             </a>
           </div>
-          <p className={styles.lFAddress}>〒462-0819　<br className={styles.sp} />愛知県名古屋市北区平安二丁目4番68号</p>
+          <p className={styles.lFAddress}>
+            〒462-0819　
+            <br className={styles.sp} />
+            愛知県名古屋市北区平安二丁目4番68号
+          </p>
           <div className={styles.lFGroupBtn}>
-            <a className={`${styles.lFBtn} ${styles.lFBtn01}`} href="tel:052-914-5551">
+            <a
+              className={`${styles.lFBtn} ${styles.lFBtn01}`}
+              href="tel:052-914-5551"
+            >
               <p>
                 <span className={styles.lFBtn01__tel}>052-914-5551</span>
-                <span className={styles.lFBtn01__time}>【受付時間】日本時間9時〜17時（土・日・祝定休）</span>
+                <span className={styles.lFBtn01__time}>
+                  【受付時間】日本時間9時〜17時（土・日・祝定休）
+                </span>
               </p>
             </a>
             <a className={`${styles.lFBtn} ${styles.lFBtn02}`} href="/contact/">
@@ -106,7 +118,9 @@ function GlobalFooter({}: TGHProps): JSX.Element {
             </div>
           </div>
           <div className={styles.lFTxtSeo}>
-            <p>フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。</p>
+            <p>
+              フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。フッターテキストが入ります。
+            </p>
           </div>
         </div>
         <div className={styles.lFBlock01}>
@@ -119,7 +133,9 @@ function GlobalFooter({}: TGHProps): JSX.Element {
                 <a href="/sitemap/">SITEMAP</a>
               </li>
             </ul>
-            <p className={styles.lFBlock01__txt}>&copy; All Rights Reserved. IMOTO SANGYO LTD.</p>
+            <p className={styles.lFBlock01__txt}>
+              &copy; All Rights Reserved. IMOTO SANGYO LTD.
+            </p>
           </div>
         </div>
       </footer>
@@ -132,7 +148,9 @@ function GlobalFooter({}: TGHProps): JSX.Element {
             <a href="/en/">EN</a>
           </li>
           <li>
-            <a className={styles.isActive} href="/">JA</a>
+            <a className={styles.isActive} href="/">
+              JA
+            </a>
           </li>
         </ul>
       </div>
