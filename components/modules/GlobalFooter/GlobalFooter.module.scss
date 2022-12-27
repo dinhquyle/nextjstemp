@@ -1,0 +1,279 @@
+@import "@/styles/main";
+.container {
+  max-width: 1050px;
+  padding: 0 25px;
+  margin: 0 auto;
+  &.w1120 {
+    max-width: 1170px;
+  }
+}
+.lFooter {
+  padding: 58px 0 20px;
+  background: #03728D url(/images/common/footer/f_bg01.jpg)  center top no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 11;
+  @include SP {
+    padding: 50px 0 10px;
+    background-size: 100% auto;
+    background: #03728D url(/images/common/footer/f_bg01_sp.jpg)  center top no-repeat;
+    background-size: cover;
+  }
+}
+.lFLogo {
+  text-align: center;
+  a {
+    display: inline-block;
+  }
+}
+.lFAddress {
+  margin-top: 6px;
+  text-align: center;
+  @include font(14, 1.572, .05em, 500);
+  color: #fff;
+  text-shadow: 2px 2px 10px #32527E;
+}
+.lFGroupBtn {
+  @include PC {
+    margin-top: 36px;
+    @include flexbox();
+    @include justify-content(space-between);
+  }
+  @include SP {
+    margin-top: 26px;
+  }
+}
+.lFBtn {
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, .1);
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(center);
+  transition: 0.3s;
+  @include PC {
+    width: 48%;
+    max-width: 475px;
+    height: 92px;
+  }
+  @include SP {
+    height: 66px;
+    margin-bottom: 10px;
+  }
+  @include HOVER {
+    &:hover {
+      opacity: 1;
+      background-color: rgba(255, 255, 255, .25);
+    }
+  }
+}
+.lFBtn01 {
+  text-align: center;
+  &__tel {
+    display: inline-block;
+    @include font(22, 32px, .05em);
+    color: #fff;
+    @include ffMR;
+    position: relative;
+    padding-left: 23px;
+    margin-top: 4px;
+    @include SP {
+      @include font(20, 30px);
+    }
+    &:before {
+      content: "";
+      width: 16px;
+      height: 21px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='21' viewBox='0 0 16 21'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:none;stroke:%23fff;%7D%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M2.346.548A5.633,5.633,0,0,0,.044,4.2C-.286,6.1,1.285,9.972,3.039,12.917s4.407,6.167,6.24,6.785a5.638,5.638,0,0,0,4.307-.286c.877-.441,1.155-.714,1.216-1.376a4.083,4.083,0,0,0-1.253-2.1,4.846,4.846,0,0,0-1.8-1.373,1.057,1.057,0,0,0-1.106.74c-.121.479-1.143,1.5-2.03.965S5.363,12.1,5.112,11.682,2.792,7.447,2.747,6.415,4.084,4.967,4.563,5.089a1.059,1.059,0,0,0,1.178-.62,4.856,4.856,0,0,0-.352-2.233A4.083,4.083,0,0,0,4.135.134c-.61-.261-.983-.147-1.789.414' transform='translate(0.516 0.464)'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -8px;
+      @include SP {
+        width: 14px;
+        height: 19px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='19' viewBox='0 0 14 19'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:none;stroke:%23fff;%7D%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M2.04.476a4.9,4.9,0,0,0-2,3.174c-.287,1.657,1.079,5.019,2.6,7.579s3.831,5.362,5.424,5.9a4.9,4.9,0,0,0,3.745-.249c.762-.383,1-.621,1.057-1.2a3.55,3.55,0,0,0-1.089-1.828,4.213,4.213,0,0,0-1.56-1.194.919.919,0,0,0-.962.644c-.105.416-.994,1.3-1.765.838s-2.83-3.622-3.048-3.987S2.427,6.474,2.388,5.577,3.55,4.318,3.967,4.424A.92.92,0,0,0,4.99,3.885a4.221,4.221,0,0,0-.306-1.941A3.549,3.549,0,0,0,3.595.116c-.53-.227-.855-.128-1.555.36' transform='translate(0.514 0.469)'/%3E%3C/svg%3E");
+      }
+    }
+  }
+  &__time {
+    display: block;
+    @include font(13, 23px, .05em, 500);
+    color: #fff;
+    white-space: nowrap;
+    @include SP {
+      margin: -4px 0 7px;
+      @include font(11, 21px);
+    }
+  }
+}
+.lFBtn02 {
+  span {
+    @include font(22, 32px, .1em);
+    color: #fff;
+    @include ffMR;
+    position: relative;
+    padding-left: 30px;
+    @include SP {
+      @include font(20, 30px);
+    }
+    &:before {
+      content: "";
+      width: 20px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='14' viewBox='0 0 20 14'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:%23fff;%7D%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M20,.438C20,.384,19.965.35,19.951.3s-.007-.1-.035-.138C19.91.156,19.9.158,19.9.152a.329.329,0,0,0-.128-.08A.334.334,0,0,0,19.636.01c-.009,0-.012-.01-.021-.01H.385C.376,0,.372.008.364.01A.341.341,0,0,0,.23.072C.184.1.137.108.1.152.1.158.09.156.084.164.056.2.063.256.049.3S0,.386,0,.438V13.562c0,.052.033.088.049.134s.005.1.035.14c.005.008.014,0,.019.012A.359.359,0,0,0,.385,14H19.615a.355.355,0,0,0,.281-.154c.005-.006.014,0,.019-.01.028-.04.021-.092.035-.14s.049-.08.049-.134ZM.769,1.347,6.981,7,.769,12.653ZM10,8.627,1.481.875H18.519ZM7.6,7.56,9.759,9.53a.35.35,0,0,0,.481,0L12.4,7.56l6.115,5.565H1.481ZM13.019,7l6.211-5.653V12.653Z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -7px;
+      @include SP {
+        margin-top: -5px;
+      }
+    }
+  }
+}
+.lFGnavi {
+  @include PC {
+    margin-top: 65px;
+    @include flexbox();
+    @include justify-content(space-between);
+  }
+  @include SP {
+    margin-top: 20px;
+  }
+  &__item {
+    @include PC {
+      width: 32%;
+      max-width: 300px;
+    }
+  }
+  &__ttl {
+    @include font(16, 1.75, .05em, bold);
+    color: #fff;
+    padding-bottom: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    @include SP {
+      cursor: pointer;
+      position: relative;
+      @include font(15);
+      padding: 25px 17px 8px 0;
+      &:before {
+        content: "";
+        width: 12px;
+        height: 6px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:none;stroke:%23fff;stroke-linecap:round;stroke-linejoin:round;%7D%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M0,5,5,0l5,5' transform='translate(10.707 5.707) rotate(180)'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: 6px;
+        transition: 0.3s;
+      }
+      &.isActive {
+        &:before {
+          transform: rotateX(180deg);
+        }
+      }
+    }
+  }
+  &__lst {
+    @include PC {
+      margin-top: 24px;
+      display: block !important;
+      + .lFGnavi__ttl {
+        margin-top: 36px;
+      }
+    }
+    @include SP {
+      display: none;
+      padding: 17px 0 2px;
+    }
+    li + li {
+      margin-top: 10px;
+      @include SP {
+        margin-top: 4px;
+      }
+    }
+    a {
+      display: inline-block;
+      @include font(15, 1.667, .05em, 500);
+      color: #fff;
+      @include SP {
+        @include font(14);
+      }
+    }
+  }
+}
+.lFTxtSeo {
+  margin-top: 95px;
+  @include font(10, 2.2, .05em, 500);
+  color: #fff;
+  @include SP {
+    margin-top: 35px;
+    line-height: 2;
+  }
+}
+.lFBlock01 {
+  margin: 44px auto 0;
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  padding-top: 22px;
+  max-width: 1120px;
+  width: 90%;
+  @include SP {
+    margin-top: 35px;
+    padding-top: 12px;
+    width: calc(100% - 50px);
+  }
+  &__inner {
+    @include PC {
+      @include flexbox();
+      @include justify-content(space-between);
+      @include align-items(center);
+    }
+    @include SP {
+      padding: 0;
+    }
+  }
+  &__link {
+    li {
+      display: inline-block;
+      position: relative;
+      &:not(:first-child) {
+        margin-left: 11px;
+        padding-left: 18px;
+        &:before {
+          content: "";
+          width: 1px;
+          height: 9px;
+          background-color: #fff;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          margin-top: -4px;
+        }
+      }
+    }
+    a {
+      display: inline-block;
+      @include font(10, 22px, .05em);
+      color: #fff;
+      @include ffMR;
+      padding: 5px 0;
+      @include SP {
+        padding: 3px 0;
+      }
+    }
+  }
+  &__txt {
+    @include font(10, 22px, .05em);
+    color: #fff;
+    @include ffMR;
+    @include SP {
+      margin-top: 10px;
+    }
+  }
+}
