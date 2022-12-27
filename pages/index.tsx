@@ -23,27 +23,10 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
       }
     }, 900);
 
-    window.addEventListener(`scroll`, listenScroll);
 
     return
   }, []);
   
-  const listenScroll = () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = window.innerHeight * 2/3;
-    const pScroll = winScroll + height;
-    console.log(document.querySelectorAll(`.cImgAni`));
-    document.querySelectorAll(`.cImgAni`).forEach( e => {
-      console.log(e.scrollIntoView);
-      const pThis = this.offsetTop - 170;
-      if(pThis < pScroll) {
-        console.log(e.scrollIntoView(true));
-      }
-      else{
-        console.log(e.scrollIntoView(false));
-      }
-    });
-  };
   return (
     <>
       <Head>
