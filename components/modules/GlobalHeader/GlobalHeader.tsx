@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
-import { MenuContext } from "@/common/contexts/menu-context";
 import styles from "./GlobalHeader.module.scss";
 import Image from "next/image";
 
@@ -8,24 +7,14 @@ type TGHProps = {
   children?: React.ReactNode;
 };
 function GlobalHeader({}: TGHProps): JSX.Element {
-  const menuContext = useContext(MenuContext);
-  const [styleHambugerBtn, setStyleHambugerBtn] = useState(``);
   const [cls, setCls] = useState(``);
   const [state, setState] = useState(0);
-
   useEffect(() => {
     window.addEventListener(`scroll`, listenToScroll);
-
-    let _styleHambugerBtn = ``;
-    if (menuContext?.isOpen) {
-      _styleHambugerBtn = styles.isActive;
-    }
-    setStyleHambugerBtn(_styleHambugerBtn);
-  }, [menuContext]);
+  }, []);
 
   const listenToScroll = () => {
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
 
     const scrollto = document.getElementById(`scrollto`);
     const isWhite = styles.isWhite;
@@ -44,8 +33,11 @@ function GlobalHeader({}: TGHProps): JSX.Element {
   };
 
   const handleHambegerClick = () => {
-    menuContext?.setIsOpen(!menuContext?.isOpen);
-    console.log(menuContext);
+    const body = document.querySelector(`body`);
+    let isLayerOn = styles.isLayerOn;
+    if( body ){
+      body.classList.toggle(isLayerOn);
+    }
   };
 
   return (
@@ -195,7 +187,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
           <div className={`${styles.sp} ${styles.lHBtnSP}`}>
             <a className={styles.lHBtn01} href="/contact/"></a>
             <div
-              className={`${styles.lHMenu} ${styleHambugerBtn}`}
+              className={styles.lHMenu} 
               onClick={handleHambegerClick}
             >
               <span></span>
@@ -220,7 +212,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
           <div className={styles.lHeaderSP__btnSP}>
             <a className={styles.lHeaderSP__btn01} href="/contact/"></a>
             <div
-              className={`${styles.lHeaderSP__menu} ${styleHambugerBtn}`}
+              className={styles.lHeaderSP__menu}
               onClick={handleHambegerClick}
             >
               <span></span>

@@ -19,6 +19,9 @@
 }
 .lHeader[data-state="1"] {
   transform: translateY(-170%);
+  @include SP{
+    transform: translateY(-180%);
+  }
 }
 .lHInner {
   width: 100%;
@@ -645,10 +648,27 @@
 //
 .isLayerOn {
   position: fixed;
+  height: 100vh;
   .lHeaderSP {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    
+    .lHeaderSP__menu{
+      span {
+        &:nth-child(1) {
+          top: 35px;
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          top: 35px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
   }
   .lMenu {
     display: block;
