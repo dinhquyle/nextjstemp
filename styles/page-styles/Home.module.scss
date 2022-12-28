@@ -107,8 +107,8 @@ Container
       -webkit-animation: 8s mv-slide forwards;
       animation: 8s mv-slide forwards;
     }
-    ul {
-      height: 100vh !important;
+    >div {
+      height: 100%;
     }
     .item {
       overflow: hidden;
