@@ -80,6 +80,15 @@ COMMON
     text-align: center;
   }
 }
+.cTtl01__2line{
+  .cTtl01__en,
+  .cTtl01__ja {
+    display: block;
+  }
+  .cTtl01__ja {
+    margin-top: 10px;
+  }
+}
 
 /* button
 ------------------------------------------------------------*/

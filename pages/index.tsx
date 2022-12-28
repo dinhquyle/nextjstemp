@@ -553,14 +553,12 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
 
         <div className={styles.secAbout}>
           <div className={styles.container}>
-            <div
-              className={`${styles.cTtl01} ${styles.cTtl01__2line} ${styles.cTtl01__center}`}
-            >
-              <p className={`${styles.cTtl01__en} ${styles.jsSplitText}`}>
-                <span className={styles.splitText}>About Us</span>
+            <div className="cTtl01 cTtl01__2line cTtl01__center">
+              <p className="cTtl01__en jsSplitText">
+                <span className="splitText">About Us</span>
               </p>
-              <h2 className={`${styles.cTtl01__ja} ${styles.jsSplitText}`}>
-                <span className={styles.splitText}>井元産業について</span>
+              <h2 className="cTtl01__ja jsSplitText">
+                <span className="splitText">井元産業について</span>
               </h2>
             </div>
             <ul className={styles.lstItem}>

@@ -644,6 +644,13 @@ Container
 
 .secAbout {
   padding: 82px 0 120px;
+  .cTtl01 {
+    &__en {
+      @include SP {
+        display: block;
+      }
+    }
+  }
   @include SP {
     padding: 48px 0 50px;
   }
@@ -849,6 +856,13 @@ Container
 
 .secSlideFull {
   padding-bottom: 120px;
+  .cTtl01 {
+    &__en {
+      @include SP {
+        display: block;
+      }
+    }
+  }
   @include SP {
     padding-bottom: 50px;
   }
