@@ -20,9 +20,16 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
       }
     }, 900);
 
+    let height = window.innerHeight;
+    if( window.innerWidth < 1000 ){
+      if(  _mv ){
+        _mv.style.height = height+'px';
+      }
+    }
     return;
   }, []);
 
+  
   return (
     <>
       <Head>
