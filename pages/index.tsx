@@ -45,7 +45,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
       </Head>
 
       <main className={styles.top}>
-        <div className={styles.sec_mv} id="sec__mv" ref={ref}>
+        <div className={styles.sec_mv} id="sec__mv">
           <Splide
             options={{
               perPage: 1,
