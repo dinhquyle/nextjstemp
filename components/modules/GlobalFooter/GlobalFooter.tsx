@@ -27,7 +27,7 @@ function GlobalFooter({}: TGHProps): JSX.Element {
       });
     });
   };
-  const handleSubmenuClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmenuClick = (e:any) => {
     e.currentTarget.classList.toggle(styles.isActive);
     if(e.currentTarget.nextElementSibling){
       e.currentTarget.nextElementSibling.classList.toggle(styles.isActive);

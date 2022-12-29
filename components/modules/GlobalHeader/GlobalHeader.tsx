@@ -56,7 +56,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
     }
     
   };
-  const handleSubmenuClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmenuClick = (e:any) => {
     //setActive(!isActive);
     e.currentTarget.classList.toggle(styles.isActive);
     if(e.currentTarget.nextElementSibling){
