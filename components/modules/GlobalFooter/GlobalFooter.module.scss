@@ -191,6 +191,9 @@
     @include SP {
       display: none;
       padding: 17px 0 2px;
+      &.isActive {
+        display: block;
+      }
     }
     li + li {
       margin-top: 10px;

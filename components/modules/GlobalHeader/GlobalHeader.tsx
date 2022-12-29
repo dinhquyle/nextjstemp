@@ -9,6 +9,8 @@ type TGHProps = {
 function GlobalHeader({}: TGHProps): JSX.Element {
   const [cls, setCls] = useState(``);
   const [state, setState] = useState(0);
+  const [isActive, setActive] = useState(false);
+
   useEffect(() => {
     window.addEventListener(`scroll`, listenToScroll);
   }, []);
@@ -33,10 +35,32 @@ function GlobalHeader({}: TGHProps): JSX.Element {
   };
 
   const handleHambegerClick = () => {
-    const body = document.querySelector(`body`);
+    let body = document.querySelector(`body`);
     let isLayerOn = styles.isLayerOn;
+    let __cur_h = body?.offsetHeight;
     if( body ){
       body.classList.toggle(isLayerOn);
+    }
+    if (document.body.classList.contains(isLayerOn)) {
+      if( body ){
+        body.style.position = 'fixed';
+        body.style.height = __cur_h+'px';
+        body.style.zIndex = '-1';
+      }
+    }
+    else{
+      if( body ){
+        body.style.position = 'static';
+        body.style.height = 'auto';
+      }
+    }
+    
+  };
+  const handleSubmenuClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //setActive(!isActive);
+    e.currentTarget.classList.toggle(styles.isActive);
+    if(e.currentTarget.nextElementSibling){
+      e.currentTarget.nextElementSibling.classList.toggle(styles.isActive);
     }
   };
 
@@ -211,8 +235,12 @@ function GlobalHeader({}: TGHProps): JSX.Element {
           </div>
           <div className={styles.lHeaderSP__btnSP}>
             <a className={styles.lHeaderSP__btn01} href="/contact/"></a>
+            {/* <div
+              className={`${styles.lHeaderSP__menu} ${isActive ? 'your_className': null}`}
+              onClick={handleHambegerClick}
+            > */}
             <div
-              className={styles.lHeaderSP__menu}
+              className={`${styles.lHeaderSP__menu}`}
               onClick={handleHambegerClick}
             >
               <span></span>
@@ -226,7 +254,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
       <div className={styles.lMenu}>
         <ul className={styles.lMGnavi}>
           <li>
-            <p className={`${styles.lMGnavi__item} ${styles.hasSubmenu}`}>
+          <p className={`${styles.lMGnavi__item} ${styles.hasSubmenu}`} onClick={handleSubmenuClick}>
               <span className={styles.lMGnavi__txtEn}>Export</span>
               <span className={styles.lMGnavi__txtJa}>海外バイヤーの方へ</span>
             </p>
@@ -242,7 +270,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
             </div>
           </li>
           <li>
-            <p className={`${styles.lMGnavi__item} ${styles.hasSubmenu}`}>
+            <p className={`${styles.lMGnavi__item} ${styles.hasSubmenu}`} onClick={handleSubmenuClick}>
               <span className={styles.lMGnavi__txtEn}>Import</span>
               <span className={styles.lMGnavi__txtJa}>日本バイヤーの方へ</span>
             </p>
@@ -270,7 +298,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
             </a>
           </li>
           <li>
-            <p className={`${styles.lMGnavi__item} ${styles.hasSubmenu}`}>
+          <p className={`${styles.lMGnavi__item} ${styles.hasSubmenu}`} onClick={handleSubmenuClick}>
               <span className={styles.lMGnavi__txtEn}>About Us</span>
               <span className={styles.lMGnavi__txtJa}>井元産業について</span>
             </p>

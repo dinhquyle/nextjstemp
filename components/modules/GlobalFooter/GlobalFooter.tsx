@@ -27,6 +27,12 @@ function GlobalFooter({}: TGHProps): JSX.Element {
       });
     });
   };
+  const handleSubmenuClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.currentTarget.classList.toggle(styles.isActive);
+    if(e.currentTarget.nextElementSibling){
+      e.currentTarget.nextElementSibling.classList.toggle(styles.isActive);
+    }
+  };
   return (
     <>
       <footer className={`${styles.lFooter} ${styles.cImgAni}`}>
@@ -66,7 +72,7 @@ function GlobalFooter({}: TGHProps): JSX.Element {
           </div>
           <div className={styles.lFGnavi}>
             <div className={styles.lFGnavi__item}>
-              <p className={styles.lFGnavi__ttl}>井元産業について</p>
+              <p className={styles.lFGnavi__ttl} onClick={handleSubmenuClick}>井元産業について</p>
               <ul className={styles.lFGnavi__lst}>
                 <li>
                   <Link href="/">
@@ -85,7 +91,7 @@ function GlobalFooter({}: TGHProps): JSX.Element {
               </ul>
             </div>
             <div className={styles.lFGnavi__item}>
-              <p className={styles.lFGnavi__ttl}>海外バイヤーの方へ</p>
+              <p className={styles.lFGnavi__ttl} onClick={handleSubmenuClick}>海外バイヤーの方へ</p>
               <ul className={styles.lFGnavi__lst}>
                 <li>
                   <a href="/export_business/">輸出事業</a>
@@ -94,7 +100,7 @@ function GlobalFooter({}: TGHProps): JSX.Element {
                   <a href="/export_goods/">輸出商品</a>
                 </li>
               </ul>
-              <p className={styles.lFGnavi__ttl}>日本国内のバイヤーの方へ</p>
+              <p className={styles.lFGnavi__ttl} onClick={handleSubmenuClick}>日本国内のバイヤーの方へ</p>
               <ul className={styles.lFGnavi__lst}>
                 <li>
                   <a href="/import_business/">輸入事業</a>
@@ -105,7 +111,7 @@ function GlobalFooter({}: TGHProps): JSX.Element {
               </ul>
             </div>
             <div className={styles.lFGnavi__item}>
-              <p className={styles.lFGnavi__ttl}>その他</p>
+              <p className={styles.lFGnavi__ttl} onClick={handleSubmenuClick}>その他</p>
               <ul className={styles.lFGnavi__lst}>
                 <li>
                   <a href="/flow/">取引の流れ</a>
