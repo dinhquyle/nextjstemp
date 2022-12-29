@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Image from "next/image";
@@ -11,6 +11,7 @@ import styles from "@/styles/page-styles/Home.module.scss";
 import { TNextPageWithLayout } from "@/common/types";
 
 const Home: TNextPageWithLayout = (): JSX.Element => {
+  const ref = useRef();
   useEffect(() => {
     const _mv = document.getElementById(`sec__mv`);
     const _isInview = styles.isInview;
@@ -26,6 +27,11 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
         _mv.style.height = height+'px';
       }
     }
+    let curentElement = ref.current;
+    if(curentElement){
+      
+    }
+    console.log( ref.current);
     return;
   }, []);
 
@@ -39,13 +45,14 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
       </Head>
 
       <main className={styles.top}>
-        <div className={styles.sec_mv} id="sec__mv">
+        <div className={styles.sec_mv} id="sec__mv" ref={ref}>
           <Splide
             options={{
               perPage: 1,
               pagination: false,
               autoplay: true,
               type: `lop`,
+              loop: true,
               speed: 1000,
               arrows: false,
             }}
