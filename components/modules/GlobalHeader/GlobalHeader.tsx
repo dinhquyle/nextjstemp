@@ -19,7 +19,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
 
     const scrollto = document.getElementById(`scrollto`);
-    const isWhite = styles.isWhite;
+    let isWhite = styles.isWhite;
     if (scrollto) {
       if (winScroll > scrollto.offsetTop) {
         setCls(isWhite);

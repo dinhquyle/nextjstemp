@@ -1,6 +1,8 @@
 import * as React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+//import { useInView } from 'react-intersection-observer';
+import { useInViewEffect, useInView } from 'react-hook-inview';
 import "@splidejs/react-splide/css";
 import Image from "next/image";
 import Head from "next/head";
@@ -11,15 +13,29 @@ import styles from "@/styles/page-styles/Home.module.scss";
 import { TNextPageWithLayout } from "@/common/types";
 
 const Home: TNextPageWithLayout = (): JSX.Element => {
-  const ref = useRef();
+  const [ref, isInView] = useInView({
+    threshold: 1,
+  });
+  const [isVisible, setVisible] = useState(false);
+  const imgAniRef = useRef<HTMLDivElement>(null);
+
+  
   useEffect(() => {
     const _mv = document.getElementById(`sec__mv`);
     const _isInview = styles.isInview;
+    const body = document.querySelector(`body`);
+
+    if (body != null) {
+      body.classList.add(styles.top);
+    }
     setTimeout(() => {
       if (_mv != null) {
         _mv.classList.add(_isInview);
       }
-    }, 900);
+      if (body != null) {
+        body.classList.add(_isInview);
+      }
+    }, 999);
 
     let height = window.innerHeight;
     if( window.innerWidth < 1000 ){
@@ -27,13 +43,35 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
         _mv.style.height = height+'px';
       }
     }
-    let curentElement = ref.current;
-    if(curentElement){
-      
-    }
-    console.log( ref.current);
     return;
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setVisible(true);
+        if (imgAniRef.current) {
+          observer.unobserve(imgAniRef.current);
+        }
+      }
+    });
+    if (imgAniRef.current) {
+      observer.observe(imgAniRef.current);
+    }
+    return () => observer.disconnect();
+
+  }, []);
+
+
+  const targetElement = useRef<HTMLDivElement>(null);
+  const scrollingTop = () => {
+    const elmnt = targetElement;
+    if( elmnt.current ){
+      elmnt.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
 
   
   return (
@@ -85,9 +123,9 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
             <p className={styles.ttl_ja}>一歩迅く、一歩広く、一歩深く</p>
           </div>
           <p className={styles.scrolldown}>
-            <a href="#export" className={styles.txt}>
+            <span className={styles.txt} onClick={scrollingTop}>
               SCROLL DOWN
-            </a>
+            </span>
           </p>
         </div>
         <p id="scrollto"></p>
@@ -148,9 +186,9 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
           </div>
         </div>
 
-        <div className={styles.secExport} id="export">
+        <div className={styles.secExport} id="export" ref={targetElement}>
           <div
-            className={`${styles.bg01} ${styles.cLazybg} ${styles.cImgAni}`}
+            className={`${styles.bg01} ${styles.cLazybg} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
           ></div>
           <div className={`${styles.container} ${styles.w1120}`}>
             <div className={styles.inner}>
@@ -180,7 +218,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     <a className={styles.pCard} href="/export_business/">
                       <div className={styles.pCard__img}>
                         <div className={styles.pCard__imgIn}>
-                          <span className={styles.cImgAni}>
+                          <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                             <Image
                               src="/images/top/export01.jpg"
                               alt=""
@@ -206,7 +244,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     <a className={styles.pCard} href="/export_goods/">
                       <div className={styles.pCard__img}>
                         <div className={styles.pCard__imgIn}>
-                          <span className={styles.cImgAni}>
+                        <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                             <Image
                               src="/images/top/export02.jpg"
                               alt=""
@@ -253,7 +291,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                 <div className={styles.swiperSlide}>
                   <a className={styles.cCase} href="#">
                     <div className={styles.cCase__img}>
-                      <span className={styles.cImgAni}>
+                        <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                         <Image
                           src="/images/temp/case01.jpg"
                           alt=""
@@ -283,7 +321,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                 <div className={styles.swiperSlide}>
                   <a className={styles.cCase} href="#">
                     <div className={styles.cCase__img}>
-                      <span className={styles.cImgAni}>
+                      <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                         <Image
                           src="/images/temp/case02.jpg"
                           alt=""
@@ -313,7 +351,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                 <div className={styles.swiperSlide}>
                   <a className={styles.cCase} href="#">
                     <div className={styles.cCase__img}>
-                      <span className={styles.cImgAni}>
+                      <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                         <Image
                           src="/images/temp/case03.jpg"
                           alt=""
@@ -355,7 +393,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
 
         <div className={styles.secImport}>
           <div
-            className={`${styles.bg01} ${styles.cLazybg} ${styles.cImgAni} ${styles.right}`}
+            className={`${styles.bg01} ${styles.cLazybg} ${styles.cImgAni} ${styles.right} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
           ></div>
           <div className={`${styles.container} ${styles.w1120}`}>
             <div className={styles.inner}>
@@ -384,7 +422,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     <a className={styles.pCard} href="/import_business/">
                       <div className={styles.pCard__img}>
                         <div className={styles.pCard__imgIn}>
-                          <span className={styles.cImgAni}>
+                          <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                             <Image
                               src="/images/top/import01.jpg"
                               alt=""
@@ -410,7 +448,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     <a className={styles.pCard} href="/import_goods/">
                       <div className={styles.pCard__img}>
                         <div className={styles.pCard__imgIn}>
-                          <span className={styles.cImgAni}>
+                          <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                             <Image
                               src="/images/top/import02.jpg"
                               alt=""
@@ -457,7 +495,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                 <div className={styles.swiperSlide}>
                   <a className={styles.cCase} href="#">
                     <div className={styles.cCase__img}>
-                      <span className={styles.cImgAni}>
+                      <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                         <Image
                           src="/images/temp/case04.jpg"
                           alt=""
@@ -488,7 +526,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                 <div className={styles.swiperSlide}>
                   <a className={styles.cCase} href="#">
                     <div className={styles.cCase__img}>
-                      <span className={styles.cImgAni}>
+                      <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                         <Image
                           src="/images/temp/case05.jpg"
                           alt=""
@@ -518,7 +556,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                 <div className={styles.swiperSlide}>
                   <a className={styles.cCase} href="#">
                     <div className={styles.cCase__img}>
-                      <span className={styles.cImgAni}>
+                      <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                         <Image
                           src="/images/temp/case06.jpg"
                           alt=""
@@ -572,7 +610,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
               <li>
                 <a className={styles.item} href="/about/#philosophy">
                   <div className={styles.item__img}>
-                    <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
+                    <div className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                       <Image
                         src="/images/top/about01.jpg"
                         alt="井元産業の目指す姿"
@@ -592,7 +630,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
               <li>
                 <a className={styles.item} href="/about/#message">
                   <div className={styles.item__img}>
-                    <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
+                    <div className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                       <Image
                         src="/images/top/about02.jpg"
                         alt="社長メッセージ"
@@ -612,7 +650,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
               <li>
                 <a className={styles.item} href="/about/#company">
                   <div className={styles.item__img}>
-                    <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
+                   <div className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                       <Image
                         src="/images/top/about03.jpg"
                         alt="会社情報"
@@ -632,7 +670,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
               <li>
                 <a className={styles.item} href="/about/#affiliates">
                   <div className={styles.item__img}>
-                    <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
+                    <div className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
                       <Image
                         src="/images/top/about04.jpg"
                         alt="関連会社"
@@ -689,7 +727,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   <a className={styles.item} href="/about/#philosophy">
                     <div className={styles.item__img}>
                       <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni}`}
+                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
                           src="/images/temp/hachiouji_01.jpg"
@@ -715,7 +753,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   <a className={styles.item} href="/about/#philosophy">
                     <div className={styles.item__img}>
                       <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni}`}
+                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
                           src="/images/temp/hachiouji_02.jpg"
@@ -741,7 +779,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   <a className={styles.item} href="/about/#philosophy">
                     <div className={styles.item__img}>
                       <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni}`}
+                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
                           src="/images/temp/hachiouji_03.jpg"
@@ -767,7 +805,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   <a className={styles.item} href="/about/#philosophy">
                     <div className={styles.item__img}>
                       <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni}`}
+                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
                           src="/images/temp/hachiouji_04.jpg"
@@ -793,7 +831,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   <a className={styles.item} href="/about/#philosophy">
                     <div className={styles.item__img}>
                       <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni}`}
+                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
                           src="/images/temp/hachiouji_05.jpg"
@@ -819,7 +857,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   <a className={styles.item} href="/about/#philosophy">
                     <div className={styles.item__img}>
                       <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni}`}
+                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
                           src="/images/temp/hachiouji_06.jpg"
@@ -845,7 +883,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   <a className={styles.item} href="/about/#philosophy">
                     <div className={styles.item__img}>
                       <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni}`}
+                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
                           src="/images/temp/hachiouji_07.jpg"
@@ -871,7 +909,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   <a className={styles.item} href="/about/#philosophy">
                     <div className={styles.item__img}>
                       <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni}`}
+                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
                           src="/images/temp/hachiouji_08.jpg"
@@ -897,7 +935,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   <a className={styles.item} href="/about/#philosophy">
                     <div className={styles.item__img}>
                       <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni}`}
+                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
                           src="/images/temp/hachiouji_09.jpg"
