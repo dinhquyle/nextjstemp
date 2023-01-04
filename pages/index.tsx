@@ -733,7 +733,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                         className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
                         <Image
-                          src="/images/temp/hachiouji_01.jpg"
+                          src="http://placeimg.com/640/480"
                           alt="社長メッセージ"
                           width={280}
                           height={210}
