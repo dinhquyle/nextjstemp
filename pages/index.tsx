@@ -2,6 +2,7 @@ import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { useInView } from 'react-intersection-observer';
+import axios from "axios";
 import "@splidejs/react-splide/css";
 import Image from "next/image";
 import Head from "next/head";
@@ -20,6 +21,24 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
 
   const [isVisible, setVisible] = useState(false);  
   const imgAniRef = useRef<HTMLDivElement>(null);
+
+  const url = "https://6264f60294374a2c506b97c9.mockapi.io/posts";
+  const [posts, setPosts] = useState<any[]>([]);
+
+  
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      let response = await axios(url);
+      setPosts(response.data);
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   
   useEffect(() => {
     const _mv = document.getElementById(`sec__mv`);
@@ -87,8 +106,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.top}>
-
+      <main className={styles.top}>      
         <div className={styles.sec_mv} id="sec__mv">
           <Splide
             options={{
@@ -110,6 +128,14 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
             <SplideSlide className={styles.item}>
               <Image
                 src="/images/top/mv_img02.jpg"
+                alt=""
+                width={1400}
+                height={850}
+              />
+            </SplideSlide>
+            <SplideSlide className={styles.item}>
+              <Image
+                src="/images/top/mv_img03.jpg"
                 alt=""
                 width={1400}
                 height={850}
@@ -712,9 +738,6 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   perPage: 4,
                   gap: `16px`,
                   pagination: false,
-                  //focus  : 'center',
-                  // autoplay: true,
-                  // type   : `loop`,
                   arrows: false,
                   breakpoints: {
                     1340: { perPage: 3 },
@@ -724,7 +747,8 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                 }}
                 className={`${styles.lstItem} ${styles.is_slider}`}
               >
-                <SplideSlide
+                {posts.map((post, index) => (
+                <SplideSlide key={index}
                   className={`${styles.itemSlide} ${styles.swiperSlide}`}
                 >
                   <a className={styles.item} href="/about/#philosophy">
@@ -732,9 +756,10 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                       <div
                         className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
                       >
+                        
                         <Image
-                          src="/images/temp/hachiouji_01.jpg"
-                          alt="社長メッセージ"
+                          src={post.imgUrl+`?v={post.id}`}
+                          alt={post.title}
                           width={280}
                           height={210}
                         />
@@ -742,222 +767,13 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     </div>
                     <div className={styles.item__info}>
                       <div>
-                        <p className={`${styles.item__txtEn}`}>Philosophy</p>
-                        <h3 className={`${styles.item__txtJa}`}>
-                          井元産業の目指す姿
-                        </h3>
+                        <p className={`${styles.item__txtEn}`}>{post.title}</p>
+                        {/* <h3 className={`${styles.item__txtJa}`}>{post.title}</h3> */}
                       </div>
                     </div>
                   </a>
                 </SplideSlide>
-                <SplideSlide
-                  className={`${styles.itemSlide} ${styles.swiperSlide}`}
-                >
-                  <a className={styles.item} href="/about/#philosophy">
-                    <div className={styles.item__img}>
-                      <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
-                      >
-                        <Image
-                          src="/images/temp/hachiouji_02.jpg"
-                          alt="社長メッセージ"
-                          width={280}
-                          height={210}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.item__info}>
-                      <div>
-                        <p className={`${styles.item__txtEn}`}>Philosophy</p>
-                        <h3 className={`${styles.item__txtJa}`}>
-                          井元産業の目指す姿
-                        </h3>
-                      </div>
-                    </div>
-                  </a>
-                </SplideSlide>
-                <SplideSlide
-                  className={`${styles.itemSlide} ${styles.swiperSlide}`}
-                >
-                  <a className={styles.item} href="/about/#philosophy">
-                    <div className={styles.item__img}>
-                      <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
-                      >
-                        <Image
-                          src="/images/temp/hachiouji_03.jpg"
-                          alt="社長メッセージ"
-                          width={280}
-                          height={210}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.item__info}>
-                      <div>
-                        <p className={`${styles.item__txtEn}`}>Philosophy</p>
-                        <h3 className={`${styles.item__txtJa}`}>
-                          井元産業の目指す姿
-                        </h3>
-                      </div>
-                    </div>
-                  </a>
-                </SplideSlide>
-                <SplideSlide
-                  className={`${styles.itemSlide} ${styles.swiperSlide}`}
-                >
-                  <a className={styles.item} href="/about/#philosophy">
-                    <div className={styles.item__img}>
-                      <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
-                      >
-                        <Image
-                          src="/images/temp/hachiouji_04.jpg"
-                          alt="社長メッセージ"
-                          width={280}
-                          height={210}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.item__info}>
-                      <div>
-                        <p className={`${styles.item__txtEn}`}>Philosophy</p>
-                        <h3 className={`${styles.item__txtJa}`}>
-                          井元産業の目指す姿
-                        </h3>
-                      </div>
-                    </div>
-                  </a>
-                </SplideSlide>
-                <SplideSlide
-                  className={`${styles.itemSlide} ${styles.swiperSlide}`}
-                >
-                  <a className={styles.item} href="/about/#philosophy">
-                    <div className={styles.item__img}>
-                      <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
-                      >
-                        <Image
-                          src="/images/temp/hachiouji_05.jpg"
-                          alt="社長メッセージ"
-                          width={280}
-                          height={210}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.item__info}>
-                      <div>
-                        <p className={`${styles.item__txtEn}`}>Philosophy</p>
-                        <h3 className={`${styles.item__txtJa}`}>
-                          井元産業の目指す姿
-                        </h3>
-                      </div>
-                    </div>
-                  </a>
-                </SplideSlide>
-                <SplideSlide
-                  className={`${styles.itemSlide} ${styles.swiperSlide}`}
-                >
-                  <a className={styles.item} href="/about/#philosophy">
-                    <div className={styles.item__img}>
-                      <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
-                      >
-                        <Image
-                          src="/images/temp/hachiouji_06.jpg"
-                          alt="社長メッセージ"
-                          width={280}
-                          height={210}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.item__info}>
-                      <div>
-                        <p className={`${styles.item__txtEn}`}>Philosophy</p>
-                        <h3 className={`${styles.item__txtJa}`}>
-                          井元産業の目指す姿
-                        </h3>
-                      </div>
-                    </div>
-                  </a>
-                </SplideSlide>
-                <SplideSlide
-                  className={`${styles.itemSlide} ${styles.swiperSlide}`}
-                >
-                  <a className={styles.item} href="/about/#philosophy">
-                    <div className={styles.item__img}>
-                      <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
-                      >
-                        <Image
-                          src="/images/temp/hachiouji_07.jpg"
-                          alt="社長メッセージ"
-                          width={280}
-                          height={210}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.item__info}>
-                      <div>
-                        <p className={`${styles.item__txtEn}`}>Philosophy</p>
-                        <h3 className={`${styles.item__txtJa}`}>
-                          井元産業の目指す姿
-                        </h3>
-                      </div>
-                    </div>
-                  </a>
-                </SplideSlide>
-                <SplideSlide
-                  className={`${styles.itemSlide} ${styles.swiperSlide}`}
-                >
-                  <a className={styles.item} href="/about/#philosophy">
-                    <div className={styles.item__img}>
-                      <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
-                      >
-                        <Image
-                          src="/images/temp/hachiouji_08.jpg"
-                          alt="社長メッセージ"
-                          width={280}
-                          height={210}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.item__info}>
-                      <div>
-                        <p className={`${styles.item__txtEn}`}>Philosophy</p>
-                        <h3 className={`${styles.item__txtJa}`}>
-                          井元産業の目指す姿
-                        </h3>
-                      </div>
-                    </div>
-                  </a>
-                </SplideSlide>
-                <SplideSlide
-                  className={`${styles.itemSlide} ${styles.swiperSlide}`}
-                >
-                  <a className={styles.item} href="/about/#philosophy">
-                    <div className={styles.item__img}>
-                      <div
-                        className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
-                      >
-                        <Image
-                          src="/images/temp/hachiouji_09.jpg"
-                          alt="社長メッセージ"
-                          width={280}
-                          height={210}
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.item__info}>
-                      <div>
-                        <p className={`${styles.item__txtEn}`}>Philosophy</p>
-                        <h3 className={`${styles.item__txtJa}`}>
-                          井元産業の目指す姿
-                        </h3>
-                      </div>
-                    </div>
-                  </a>
-                </SplideSlide>
+                ))}
               </Splide>
             </div>
           </div>

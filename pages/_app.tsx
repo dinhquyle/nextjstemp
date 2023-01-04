@@ -1,5 +1,4 @@
 import type { AppProps } from "next/app";
-
 import "@/styles/globals.scss";
 
 // types
@@ -12,7 +11,7 @@ type TAppPropsWithLayout = AppProps & {
 function MyApp({ Component, pageProps }: TAppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
-
+  
   return getLayout(<Component {...pageProps} />);
 }
 

@@ -476,7 +476,7 @@ Container
     left: 0;
     right: calc((100% - 1120px) / 2 + 60px);
     z-index: -1;
-    background: #03728d url(/images/top/export_bg01.jpg) no-repeat;
+    background: #03728d url(/images/top/export_bg01.jpg) center no-repeat;
     background-size: cover;
     @include max-screen(1050px) {
       right: 25px;
@@ -486,7 +486,7 @@ Container
       top: 0;
       right: 0;
       bottom: 37px;
-      background: #03728d url(/images/top/export_bg01_sp.jpg) no-repeat;
+      background: #03728d url(/images/top/export_bg01_sp.jpg) center no-repeat;
       background-size: cover;
     }
   }
@@ -602,7 +602,7 @@ Container
     padding-top: 49px;
   }
   .bg01 {
-    background: #03728d url(/images/top/import_bg01.jpg) no-repeat;
+    background: #03728d url(/images/top/import_bg01.jpg) center no-repeat;
     background-size: cover;
     position: absolute;
     top: 120px;
@@ -617,7 +617,7 @@ Container
       top: 0;
       left: 0;
       bottom: 37px;
-      background: #03728d url(/images/top/import_bg01_sp.jpg) no-repeat;
+      background: #03728d url(/images/top/import_bg01_sp.jpg) center no-repeat;
       background-size: cover;
     }
   }
