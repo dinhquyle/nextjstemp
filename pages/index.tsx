@@ -34,7 +34,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
     try {
       let response = await axios(url);
       setPosts(response.data);
-      console.log(response.data);
+      //console.log(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -118,28 +118,58 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
             className={styles.slide}
           >
             <SplideSlide className={styles.item}>
-              <Image
-                src="/images/top/mv_img01.jpg"
-                alt=""
-                width={1400}
-                height={850}
-              />
+              <span className={styles.pc}>
+                <Image
+                  src="/images/top/mv_img01.jpg"
+                  alt=""
+                  width={1400}
+                  height={850}
+                />
+              </span>       
+              <span className={styles.sp}>
+                <Image
+                  src="/images/top/mv_img01_sp.jpg"
+                  alt=""
+                  width={375}
+                  height={668}
+                />
+              </span>              
             </SplideSlide>
             <SplideSlide className={styles.item}>
-              <Image
-                src="/images/top/mv_img02.jpg"
-                alt=""
-                width={1400}
-                height={850}
-              />
+              <span className={styles.pc}>
+                <Image
+                  src="/images/top/mv_img02.jpg"
+                  alt=""
+                  width={1400}
+                  height={850}
+                />
+              </span>       
+              <span className={styles.sp}>
+                <Image
+                  src="/images/top/mv_img02_sp.jpg"
+                  alt=""
+                  width={375}
+                  height={668}
+                />
+              </span>
             </SplideSlide>
             <SplideSlide className={styles.item}>
-              <Image
-                src="/images/top/mv_img03.jpg"
-                alt=""
-                width={1400}
-                height={850}
-              />
+              <span className={styles.pc}>
+                <Image
+                  src="/images/top/mv_img03.jpg"
+                  alt=""
+                  width={1400}
+                  height={850}
+                />
+              </span>       
+              <span className={styles.sp}>
+                <Image
+                  src="/images/top/mv_img03_sp.jpg"
+                  alt=""
+                  width={375}
+                  height={668}
+                />
+              </span>
             </SplideSlide>
           </Splide>
 
@@ -742,7 +772,8 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                   breakpoints: {
                     1340: { perPage: 3 },
                     840: { perPage: 2 },
-                    580: { perPage: 1, gap: 0 },
+                    580: { perPage: 1, gap: `8px` },
+                    360: { perPage: 1, gap: 0 },
                   },
                 }}
                 className={`${styles.lstItem} ${styles.is_slider}`}
@@ -762,6 +793,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                           alt={post.title}
                           width={280}
                           height={210}
+                          loading="lazy"
                         />
                       </div>
                     </div>

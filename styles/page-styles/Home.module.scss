@@ -902,6 +902,12 @@ Container
       .item-slide {
         max-width: 250px;
       }
+      .itemSlide {
+        max-width: 317px;
+        @media (max-width: 364px){
+          max-width: 100%;
+        }
+      }
     }
   }
   .item {
