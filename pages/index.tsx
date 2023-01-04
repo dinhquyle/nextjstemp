@@ -101,8 +101,8 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Temp</title>
-        <meta name="description" content="description here" />
+        <title>Dinh Quy Le</title>
+        <meta name="description" content="Dinh Quy Le" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
