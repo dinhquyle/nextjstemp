@@ -433,6 +433,7 @@ Container
     bottom: 0;
     background: #fff;
     transition: all 1s;
+    width: 0;
   }
   &.right {
     &:after {
@@ -880,6 +881,9 @@ Container
   }
   .slidebox {
     overflow: hidden;
+  }
+  .swiper-wrapper{
+    @include flexbox;
   }
   .lstItem {
     margin-top: 55px;

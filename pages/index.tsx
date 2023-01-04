@@ -1,8 +1,7 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-//import { useInView } from 'react-intersection-observer';
-import { useInViewEffect, useInView } from 'react-hook-inview';
+import { useInView } from 'react-intersection-observer';
 import "@splidejs/react-splide/css";
 import Image from "next/image";
 import Head from "next/head";
@@ -13,12 +12,14 @@ import styles from "@/styles/page-styles/Home.module.scss";
 import { TNextPageWithLayout } from "@/common/types";
 
 const Home: TNextPageWithLayout = (): JSX.Element => {
+
   const [ref, isInView] = useInView({
     threshold: 1,
+    initialInView: true,
   });
-  const [isVisible, setVisible] = useState(false);
-  const imgAniRef = useRef<HTMLDivElement>(null);
 
+  const [isVisible, setVisible] = useState(false);  
+  const imgAniRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const _mv = document.getElementById(`sec__mv`);
@@ -59,20 +60,24 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
       observer.observe(imgAniRef.current);
     }
     return () => observer.disconnect();
-
+    
   }, []);
-
 
   const targetElement = useRef<HTMLDivElement>(null);
   const scrollingTop = () => {
     const elmnt = targetElement;
     if( elmnt.current ){
-      elmnt.current.scrollIntoView({
-        behavior: "smooth",
+      let headerHeight = 100;
+      if( window.innerWidth < 1000 ){
+        headerHeight = 70;
+      }
+      let scrollTo = elmnt.current.offsetTop - headerHeight;
+      window.scroll({ 
+        top: scrollTo, 
+        behavior: "smooth" 
       });
     }
   };
-
   
   return (
     <>
@@ -83,14 +88,12 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
       </Head>
 
       <main className={styles.top}>
+
         <div className={styles.sec_mv} id="sec__mv">
           <Splide
             options={{
               perPage: 1,
               pagination: false,
-              autoplay: true,
-              type: `lop`,
-              loop: true,
               speed: 1000,
               arrows: false,
             }}
@@ -188,7 +191,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
 
         <div className={styles.secExport} id="export" ref={targetElement}>
           <div
-            className={`${styles.bg01} ${styles.cLazybg} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
+            className={`${styles.bg01} ${styles.cLazybg} ${styles.cImgAni} ${isInView ? `${styles.isInview}` : ''}`} ref={ref}
           ></div>
           <div className={`${styles.container} ${styles.w1120}`}>
             <div className={styles.inner}>
@@ -393,7 +396,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
 
         <div className={styles.secImport}>
           <div
-            className={`${styles.bg01} ${styles.cLazybg} ${styles.cImgAni} ${styles.right} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
+            className={`${styles.bg01} ${styles.cLazybg} ${styles.cImgAni} ${styles.right} ${isInView ? `${styles.isInview}` : ''}`} ref={ref}
           ></div>
           <div className={`${styles.container} ${styles.w1120}`}>
             <div className={styles.inner}>
@@ -959,9 +962,10 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
             </div>
           </div>
         </div>
+
       </main>
     </>
-  );
+  )
 };
 
 Home.getLayout = function getLayout(page: React.ReactElement) {
