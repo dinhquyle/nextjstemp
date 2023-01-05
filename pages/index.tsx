@@ -2,7 +2,6 @@ import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { useInView } from 'react-intersection-observer';
-import axios from "axios";
 import "@splidejs/react-splide/css";
 import Image from "next/image";
 import Head from "next/head";
@@ -29,9 +28,9 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
   }, []);
   const getData = async () => {
     try {
-      let response = await axios(url);
-      setPosts(response.data);
-      //console.log(response.data);
+      let response = await fetch(url);
+      const data = await response.json();
+      setPosts(data);
     } catch (err) {
       console.log(err);
     }

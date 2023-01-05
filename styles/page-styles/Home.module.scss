@@ -423,6 +423,9 @@ Container
   position: relative;
   display: block;
   font-size: 0;
+  >span{
+    width: 100%;
+  }
   &:after {
     content: "";
     position: absolute;
