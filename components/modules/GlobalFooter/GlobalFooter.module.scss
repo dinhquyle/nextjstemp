@@ -228,8 +228,8 @@
   width: 100%;
   @include SP {
     margin-top: 35px;
-    padding-top: 12px;
-    width: calc(100% - 50px);
+    padding: 12px 25px 0;
+    text-align: center;
   }
   &__inner {
     @include PC {
