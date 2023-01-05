@@ -23,13 +23,10 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
   const imgAniRef = useRef<HTMLDivElement>(null);
 
   const url = "https://6264f60294374a2c506b97c9.mockapi.io/posts";
-  const [posts, setPosts] = useState<any[]>([]);
-
-  
+  const [posts, setPosts] = useState<any[]>([]);  
   useEffect(() => {
     getData();
   }, []);
-
   const getData = async () => {
     try {
       let response = await axios(url);
@@ -101,7 +98,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Dinh Quy Le</title>
+        <title>NextJS Demo</title>
         <meta name="description" content="Dinh Quy Le" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
