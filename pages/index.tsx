@@ -99,6 +99,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
       <Head>
         <title>NextJS Demo</title>
         <meta name="description" content="Dinh Quy Le" />
+        <meta name="robots" content="noindex,nofollow" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

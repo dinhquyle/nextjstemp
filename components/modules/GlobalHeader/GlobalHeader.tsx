@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { MenuContext } from "@/common/contexts/menu-context";
 import Link from "next/link";
 import styles from "./GlobalHeader.module.scss";
 import Image from "next/image";
