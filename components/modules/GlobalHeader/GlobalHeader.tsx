@@ -82,7 +82,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
                 <p className={styles.pc}>
                   <Image
                     src="/images/common/header/logo01.png"
-                    alt="井元産業株式会社"
+                    alt="テキスト"
                     width={161}
                     height={145}
                   />
@@ -90,7 +90,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
                 <p className={styles.sp}>
                   <Image
                     src="/images/common/header/logo01_sp.png"
-                    alt="井元産業株式会社"
+                    alt="テキスト"
                     width={83}
                     height={125}
                   />
@@ -104,14 +104,14 @@ function GlobalHeader({}: TGHProps): JSX.Element {
                 <p className={styles.img}>
                   <Image
                     src="/images/common/header/logo02.png"
-                    alt="井元産業株式会社"
+                    alt="テキスト"
                     width={132}
                     height={56}
                     className={styles.pc}
                   />
                   <Image
                     src="/images/common/header/logo02_sp.png"
-                    alt="井元産業株式会社"
+                    alt="テキスト"
                     width={118}
                     height={50}
                     className={styles.sp}
@@ -227,7 +227,7 @@ function GlobalHeader({}: TGHProps): JSX.Element {
               <a>
                 <Image
                   src="/images/common/header/logo02_sp.png"
-                  alt="井元産業株式会社"
+                  alt="テキスト"
                   width={118}
                   height={50}
                 />
@@ -257,15 +257,15 @@ function GlobalHeader({}: TGHProps): JSX.Element {
           <li>
           <p className={`${styles.lMGnavi__item} ${styles.hasSubmenu}`} onClick={handleSubmenuClick}>
               <span className={styles.lMGnavi__txtEn}>Export</span>
-              <span className={styles.lMGnavi__txtJa}>海外バイヤーの方へ</span>
+              <span className={styles.lMGnavi__txtJa}>テキストテキスト</span>
             </p>
             <div className={styles.lMSubmenu}>
               <ul>
                 <li>
-                  <a href="/export_business/">輸出事業</a>
+                  <a href="/export_business/">テキスト</a>
                 </li>
                 <li>
-                  <a href="/export_goods/">輸出商品</a>
+                  <a href="/export_goods/">テキスト</a>
                 </li>
               </ul>
             </div>
@@ -273,15 +273,15 @@ function GlobalHeader({}: TGHProps): JSX.Element {
           <li>
             <p className={`${styles.lMGnavi__item} ${styles.hasSubmenu}`} onClick={handleSubmenuClick}>
               <span className={styles.lMGnavi__txtEn}>Import</span>
-              <span className={styles.lMGnavi__txtJa}>日本バイヤーの方へ</span>
+              <span className={styles.lMGnavi__txtJa}>テキストテキスト</span>
             </p>
             <div className={styles.lMSubmenu}>
               <ul>
                 <li>
-                  <a href="/import_business/">輸入事業</a>
+                  <a href="/import_business/">テキスト</a>
                 </li>
                 <li>
-                  <a href="/import_goods/">輸入商品</a>
+                  <a href="/import_goods/">テキスト</a>
                 </li>
               </ul>
             </div>

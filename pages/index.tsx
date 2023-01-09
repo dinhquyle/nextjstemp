@@ -264,7 +264,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                 <div className={styles.pTxt01}>
                   <p>
                     MADE in
-                    JAPANの高品質な製品を世界に届けるために、井元産業があらゆる貿易業務を代行します。
+                    JAPANテキストテキストテキストテキストテキストテキストテキストテキストテキスト
                   </p>
                 </div>
               </div>
@@ -366,7 +366,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     </div>
                     <div className={styles.cCase__txt}>
                       <p>
-                        納入先・仕入先の社名・業種が入ります納納入先・仕入先の社名・業種が入ります納
+                      テキストテキストテキストテキストテキストテキストテキストテキストテキスト
                       </p>
                     </div>
                     <p className={styles.cCase__cate02}>
@@ -396,7 +396,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     </div>
                     <div className={styles.cCase__txt}>
                       <p>
-                        納入先・仕入先の社名・業種が入ります納納入先・仕入先の社名・業種が入ります納
+                      テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
                       </p>
                     </div>
                     <p className={styles.cCase__cate02}>
@@ -426,7 +426,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     </div>
                     <div className={styles.cCase__txt}>
                       <p>
-                        納入先・仕入先の社名・業種が入ります納納入先・仕入先の社名・業種が入ります納
+                      テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
                       </p>
                     </div>
                     <p className={styles.cCase__cate02}>
@@ -468,7 +468,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                 </div>
                 <div className={styles.pTxt01}>
                   <p>
-                    海外の安価で優れた製品を日本に供給するために、井元産業があらゆる貿易業務を代行します。
+                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
                   </p>
                 </div>
               </div>
@@ -570,7 +570,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     </div>
                     <div className={styles.cCase__txt}>
                       <p>
-                        納入先・仕入先の社名・業種が入ります納納入先・仕入先の社名・業種が入ります納
+                      テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
                       </p>
                     </div>
                     <p className={styles.cCase__cate02}>
@@ -601,7 +601,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     </div>
                     <div className={styles.cCase__txt}>
                       <p>
-                        納入先・仕入先の社名・業種が入ります納納入先・仕入先の社名・業種が入ります納
+                      テキストテキストテキストテキストテキストテキストテキストテキストテキスト
                       </p>
                     </div>
                     <p className={styles.cCase__cate02}>
@@ -631,7 +631,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
                     </div>
                     <div className={styles.cCase__txt}>
                       <p>
-                        納入先・仕入先の社名・業種が入ります納納入先・仕入先の社名・業種が入ります納
+                      テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
                       </p>
                     </div>
                     <p className={styles.cCase__cate02}>

@@ -42,7 +42,7 @@ function GlobalFooter({}: TGHProps): JSX.Element {
               <a>
                 <Image
                   src="/images/common/footer/f_logo01.png"
-                  alt="井元産業株式会社"
+                  alt="テキスト"
                   width={162}
                   height={148}
                 />
@@ -52,17 +52,17 @@ function GlobalFooter({}: TGHProps): JSX.Element {
           <p className={styles.lFAddress}>
             〒462-0819　
             <br className={styles.sp} />
-            愛知県名古屋市北区平安二丁目4番68号
+            テキストテキストテキストテキストテキスト
           </p>
           <div className={styles.lFGroupBtn}>
             <a
               className={`${styles.lFBtn} ${styles.lFBtn01}`}
-              href="tel:052-914-5551"
+              href="tel:052-000-0000"
             >
               <p>
-                <span className={styles.lFBtn01__tel}>052-914-5551</span>
+                <span className={styles.lFBtn01__tel}>052-000-0000</span>
                 <span className={styles.lFBtn01__time}>
-                  【受付時間】日本時間9時〜17時（土・日・祝定休）
+                テキストテキストテキストテキストテキスト
                 </span>
               </p>
             </a>
