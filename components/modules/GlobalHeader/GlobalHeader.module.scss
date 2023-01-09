@@ -286,8 +286,11 @@
   &__btnSP {
     @include flexbox();
     position: absolute;
+    z-index: 999;
     top: 0;
     right: 0;
+    opacity: 0;
+    visibility: hidden;
   }
   &__btn01 {
     width: 70px;
@@ -361,11 +364,9 @@
     }
   }
   .lHLogo__01 {
-    @include PC {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
   .lHLogo__02 {
     @include PC {
@@ -407,6 +408,10 @@
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
+      &__btnSP {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 }
@@ -650,12 +655,18 @@
 .isLayerOn {
   position: fixed;
   height: 100vh;
+  .lHLogo{
+    &__01{opacity: 0; visibility: hidden; pointer-events: none;}
+  }
   .lHeaderSP {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    
-    .lHeaderSP__menu{
+    &__btnSP {
+      opacity: 1;
+      visibility: visible;
+    }
+    &__menu{
       span {
         &:nth-child(1) {
           top: 35px;

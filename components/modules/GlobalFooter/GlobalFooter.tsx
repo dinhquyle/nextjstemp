@@ -145,7 +145,7 @@ function GlobalFooter({}: TGHProps): JSX.Element {
               </li>
             </ul>
             <p className={styles.lFBlock01__txt}>
-              &copy; All Rights Reserved. IMOTO SANGYO LTD.
+              &copy; All Rights Reserved.
             </p>
           </div>
         </div>
