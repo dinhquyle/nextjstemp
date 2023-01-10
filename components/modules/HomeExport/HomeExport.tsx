@@ -3,7 +3,6 @@ import { useInView } from 'react-intersection-observer';
 import Image from "next/image";
 import styles from "@/styles/page-styles/Home.module.scss";
 
-
 function HomeExport(): JSX.Element {
   const targetElement = useRef<HTMLDivElement>(null);
   const [ref, isInView] = useInView({

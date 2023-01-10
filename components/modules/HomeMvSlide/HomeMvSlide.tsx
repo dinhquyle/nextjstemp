@@ -1,13 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { BtnScrollContext } from "@/common/contexts/scroll-btn-context";
 import Image from "next/image";
 import styles from "@/styles/page-styles/Home.module.scss";
 
-
 function HomeMvSlide(): JSX.Element {
   const targetElement = useRef<HTMLDivElement>(null);
+  const menuContext = useContext(BtnScrollContext);
+  
   const scrollingTop = () => {
     const elmnt = targetElement;
+    console.log(menuContext);
     if( elmnt.current ){
       let headerHeight = 100;
       if( window.innerWidth < 1000 ){

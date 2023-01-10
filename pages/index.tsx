@@ -19,6 +19,21 @@ import styles from "@/styles/page-styles/Home.module.scss";
 import { TNextPageWithLayout } from "@/common/types";
 
 const Home: TNextPageWithLayout = (): JSX.Element => {
+
+  useEffect(() => {
+    let el = document.querySelector('#jsTest') as HTMLElement | null;
+    if( el ){
+      const ms = el.innerText;
+      for( let i = 0; i < ms.length; i++ ){
+        el.innerHTML += '<span>'+ms[i]+'</span>';
+      }
+    }
+    // let str = document.getElementsByClassName(styles.splitText) as HTMLCollectionOf<HTMLElement>;
+    // //console.log(str[0].innerText);
+    // for (let i = 0; i < str.length; i++) {
+    //   console.log(str[i].innerText);
+    // }
+  }, []);
   
   useEffect(() => {
     const _mv = document.getElementById(`sec__mv`);
@@ -50,9 +65,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
     <>
       <Head>
         <title>NextJS Demo</title>
-        <meta name="description" content="Dinh Quy Le" />
-        <meta name="robots" content="noindex,nofollow" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Dinh Quy Le" />        
       </Head>
 
       <main className={styles.top}>    

@@ -14,6 +14,7 @@ const BaseLayout = ({ children }: TBaseLayout): JSX.Element => {
         <title>{SITE_CONFIG.title}</title>
         <meta name="description" content={SITE_CONFIG.description} />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="noindex,nofollow" />
       </Head>
       <div className={styles.BaseLayout}>{children}</div>
     </>

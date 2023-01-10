@@ -2,6 +2,7 @@ import Head from "next/head";
 import { SITE_CONFIG } from "@/common/constants";
 import { Logo } from "@/components/elements/Logo";
 import { HamburgerButton } from "@/components/elements/HamburgerButton";
+import { DarkModeButton } from "@/components/elements/DarkModeButton";
 import { GlobalMenu } from "@/components/modules/GlobalMenu";
 import { GlobalHeader } from "@/components/modules/GlobalHeader";
 import { GlobalFooter } from "@/components/modules/GlobalFooter";
@@ -16,13 +17,14 @@ const FrontLayout = ({ children }: TFLProps): JSX.Element => {
       <Head>
         <title>{SITE_CONFIG.title}</title>
         <meta name="description" content={SITE_CONFIG.description} />
-        <link rel="icon" href="/favicon.ico" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" media="all"></link>
       </Head>
       <GlobalHeader>
         <Logo />
         <HamburgerButton />
         <GlobalMenu />
       </GlobalHeader>
+      <DarkModeButton />
       <div className={styles.Content}>{children}</div>
       <GlobalFooter></GlobalFooter>
     </>

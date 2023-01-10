@@ -474,12 +474,12 @@ COMMON
     }
   }
   &__ttl {
-    padding: 20px 0 14px;
+    padding: 20px 10px 14px;
     border-bottom: 1px solid #CDDFEA;
     background-color: #fff;
     position: relative;
     @include SP {
-      padding: 12px 0 0;
+      padding: 12px 10px;
       border-bottom: 0;
       font-weight: bold
     }
