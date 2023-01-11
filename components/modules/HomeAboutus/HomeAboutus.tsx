@@ -1,25 +1,7 @@
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/page-styles/Home.module.scss";
 
 function HomeAboutus(): JSX.Element {
-  const [isVisible, setVisible] = useState(false);  
-  const imgAniRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setVisible(true);
-        if (imgAniRef.current) {
-          observer.unobserve(imgAniRef.current);
-        }
-      }
-    });
-    if (imgAniRef.current) {
-      observer.observe(imgAniRef.current);
-    }
-    return () => observer.disconnect();
-    
-  }, []);
   return (
     <>
       <div className={styles.secAbout}>
@@ -36,7 +18,7 @@ function HomeAboutus(): JSX.Element {
             <li>
               <a className={styles.item} href="/about/#philosophy">
                 <div className={styles.item__img}>
-                  <div className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
+                  <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
                     <Image
                       src="/images/top/about01.jpg"
                       alt="井元産業の目指す姿"
@@ -56,7 +38,7 @@ function HomeAboutus(): JSX.Element {
             <li>
               <a className={styles.item} href="/about/#message">
                 <div className={styles.item__img}>
-                  <div className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
+                  <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
                     <Image
                       src="/images/top/about02.jpg"
                       alt="社長メッセージ"
@@ -76,7 +58,7 @@ function HomeAboutus(): JSX.Element {
             <li>
               <a className={styles.item} href="/about/#company">
                 <div className={styles.item__img}>
-                  <div className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
+                  <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
                     <Image
                       src="/images/top/about03.jpg"
                       alt="会社情報"
@@ -96,7 +78,7 @@ function HomeAboutus(): JSX.Element {
             <li>
               <a className={styles.item} href="/about/#affiliates">
                 <div className={styles.item__img}>
-                  <div className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
+                  <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
                     <Image
                       src="/images/top/about04.jpg"
                       alt="関連会社"

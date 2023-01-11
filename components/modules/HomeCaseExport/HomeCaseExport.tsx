@@ -1,26 +1,8 @@
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/page-styles/Home.module.scss";
 
 
 function HomeCaseExport(): JSX.Element {
-  const [isVisible, setVisible] = useState(false);  
-  const imgAniRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setVisible(true);
-        if (imgAniRef.current) {
-          observer.unobserve(imgAniRef.current);
-        }
-      }
-    });
-    if (imgAniRef.current) {
-      observer.observe(imgAniRef.current);
-    }
-    return () => observer.disconnect();
-    
-  }, []);
   return (
     <>
       <div className={styles.secCase}>
@@ -42,7 +24,7 @@ function HomeCaseExport(): JSX.Element {
               <div className={styles.swiperSlide}>
                 <a className={styles.cCase} href="#">
                   <div className={styles.cCase__img}>
-                      <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
+                      <span className={`${styles.cImgAni}`}>
                       <Image
                         src="/images/temp/case01.jpg"
                         alt=""
@@ -72,7 +54,7 @@ function HomeCaseExport(): JSX.Element {
               <div className={styles.swiperSlide}>
                 <a className={styles.cCase} href="#">
                   <div className={styles.cCase__img}>
-                    <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
+                    <span className={`${styles.cImgAni}`}>
                       <Image
                         src="/images/temp/case02.jpg"
                         alt=""
@@ -102,7 +84,7 @@ function HomeCaseExport(): JSX.Element {
               <div className={styles.swiperSlide}>
                 <a className={styles.cCase} href="#">
                   <div className={styles.cCase__img}>
-                    <span className={`${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}>
+                    <span className={`${styles.cImgAni}`}>
                       <Image
                         src="/images/temp/case03.jpg"
                         alt=""

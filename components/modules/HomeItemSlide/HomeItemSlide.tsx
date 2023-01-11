@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Image from "next/image";
 import styles from "@/styles/page-styles/Home.module.scss";
 
-
 function HomeItemSlide(): JSX.Element {
-  const [isVisible, setVisible] = useState(false);  
-  const imgAniRef = useRef<HTMLDivElement>(null);
   const url = "https://6264f60294374a2c506b97c9.mockapi.io/posts";
   const [posts, setPosts] = useState<any[]>([]);  
   useEffect(() => {
@@ -21,21 +18,6 @@ function HomeItemSlide(): JSX.Element {
       console.log(err);
     }
   };
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setVisible(true);
-        if (imgAniRef.current) {
-          observer.unobserve(imgAniRef.current);
-        }
-      }
-    });
-    if (imgAniRef.current) {
-      observer.observe(imgAniRef.current);
-    }
-    return () => observer.disconnect();
-    
-  }, []);
   return (
     <>
       <div className={styles.secSlideFull}>
@@ -71,11 +53,10 @@ function HomeItemSlide(): JSX.Element {
                 className={`${styles.itemSlide} ${styles.swiperSlide}`}
               >
                 <a className={styles.item} href="/about/#philosophy">
-                  <div className={styles.item__img}>
+                  <div className={`${styles.item__img} ${styles.cImgAni}`}>
                     <div
-                      className={`${styles.item__imgIn} ${styles.cImgAni} ${isVisible ? `${styles.isInview}` : ''}`} ref={imgAniRef}
-                    >
-                      
+                      className={`${styles.item__imgIn}`}
+                    >                      
                       <Image
                         src={post.imgUrl+`?v={post.id}`}
                         alt={post.title}

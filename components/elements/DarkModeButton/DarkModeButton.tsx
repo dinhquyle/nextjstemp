@@ -3,7 +3,6 @@ import styles from "./DarkModeButton.module.scss";
 
 function DarkModeButton(): JSX.Element {
   const [isActive, setIsActive] = useState(``);
-
   useEffect(() => {
     window.addEventListener(`scroll`, listenToScroll);
   }, []);
@@ -31,7 +30,7 @@ function DarkModeButton(): JSX.Element {
   
   return (
     <>
-      <div className={`${styles.darkMode} ${isActive}`}>
+      <div className={`${styles.darkMode} ${isActive}`} title="Dark Mode">
         <input type="checkbox" className={styles.checkbox} id="checkbox" />
         <label htmlFor="checkbox" className={styles.label} onClick={handleDarkModeClick}>
           <i className={`fas fa-moon ${styles.iconMoon}`}></i>

@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import "@splidejs/react-splide/css";
 import Head from "next/head";
 import { BaseLayout } from "@/components/layouts/BaseLayout/BaseLayout";
@@ -19,7 +21,7 @@ import styles from "@/styles/page-styles/Home.module.scss";
 import { TNextPageWithLayout } from "@/common/types";
 
 const Home: TNextPageWithLayout = (): JSX.Element => {
-
+  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
     let el = document.querySelector('#jsTest') as HTMLElement | null;
     if( el ){
@@ -28,11 +30,6 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
         el.innerHTML += '<span>'+ms[i]+'</span>';
       }
     }
-    // let str = document.getElementsByClassName(styles.splitText) as HTMLCollectionOf<HTMLElement>;
-    // //console.log(str[0].innerText);
-    // for (let i = 0; i < str.length; i++) {
-    //   console.log(str[i].innerText);
-    // }
   }, []);
   
   useEffect(() => {
@@ -61,6 +58,27 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
     return;
   }, []);
   
+  useEffect(() => {
+    const allWithClass = Array.from(
+      document.getElementsByClassName(styles.cImgAni)
+    );
+    allWithClass.forEach((box, i) => {
+      const anim = gsap.fromTo(box, {autoAlpha: 0, y: 50}, {duration: 1, autoAlpha: 1, y: 0});
+      ScrollTrigger.create({
+        trigger: box,
+        animation: anim,
+        once: true,
+      });
+      setTimeout(() => {
+        ScrollTrigger.batch(box, {
+          toggleClass: styles.isInview,
+          once: true
+        });
+      }, 100);
+    });
+  }, []);
+
+
   return (
     <>
       <Head>
