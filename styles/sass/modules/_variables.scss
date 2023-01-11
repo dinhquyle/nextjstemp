@@ -564,6 +564,7 @@ COMMON
   right: 0;
   margin: auto 0;
   z-index: 10;
+  display: none;
   @include SP {
     width: 50px;
     height: 115px;

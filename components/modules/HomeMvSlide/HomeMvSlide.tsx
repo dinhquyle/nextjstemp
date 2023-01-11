@@ -1,22 +1,17 @@
-import { useEffect, useRef, useState, useContext } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { BtnScrollContext } from "@/common/contexts/scroll-btn-context";
 import Image from "next/image";
 import styles from "@/styles/page-styles/Home.module.scss";
 
 function HomeMvSlide(): JSX.Element {
-  const targetElement = useRef<HTMLDivElement>(null);
-  const menuContext = useContext(BtnScrollContext);
-  
   const scrollingTop = () => {
+    const targetElement = document.getElementById(`export`);
     const elmnt = targetElement;
-    console.log(menuContext);
-    if( elmnt.current ){
+    if( elmnt ){
       let headerHeight = 100;
       if( window.innerWidth < 1000 ){
         headerHeight = 70;
       }
-      let scrollTo = elmnt.current.offsetTop - headerHeight;
+      let scrollTo = elmnt.offsetTop - headerHeight;
       window.scroll({ 
         top: scrollTo, 
         behavior: "smooth" 

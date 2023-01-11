@@ -4,7 +4,6 @@ import Image from "next/image";
 import styles from "@/styles/page-styles/Home.module.scss";
 
 function HomeExport(): JSX.Element {
-  const targetElement = useRef<HTMLDivElement>(null);
   const [ref, isInView] = useInView({
     threshold: 1,
     initialInView: true,
@@ -28,7 +27,7 @@ function HomeExport(): JSX.Element {
   }, []);
   return (
     <>
-      <div className={styles.secExport} id="export" ref={targetElement}>
+      <div className={styles.secExport} id="export">
         <div
           className={`${styles.bg01} ${styles.cLazybg} ${styles.cImgAni} ${isInView ? `${styles.isInview}` : ''}`} ref={ref}
         ></div>
