@@ -1,11 +1,12 @@
 import Image from "next/image";
-import styles from "@/styles/page-styles/Home.module.scss";
+import styles from "./HomeAboutus.module.scss";
+import stylesCom from "@/styles/page-styles/Home.module.scss";
 
 function HomeAboutus(): JSX.Element {
   return (
     <>
       <div className={styles.secAbout}>
-        <div className={styles.container}>
+        <div className={stylesCom.container}>
           <div className="cTtl01 cTtl01__2line cTtl01__center">
             <p className="cTtl01__en jsSplitText">
               <span className="splitText">About Us</span>
@@ -18,7 +19,7 @@ function HomeAboutus(): JSX.Element {
             <li>
               <a className={styles.item} href="/about/#philosophy">
                 <div className={styles.item__img}>
-                  <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
+                  <div className={`${styles.item__imgIn} ${stylesCom.cImgAni}`}>
                     <Image
                       src="/images/top/about01.jpg"
                       alt="井元産業の目指す姿"
@@ -38,7 +39,7 @@ function HomeAboutus(): JSX.Element {
             <li>
               <a className={styles.item} href="/about/#message">
                 <div className={styles.item__img}>
-                  <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
+                  <div className={`${styles.item__imgIn} ${stylesCom.cImgAni}`}>
                     <Image
                       src="/images/top/about02.jpg"
                       alt="社長メッセージ"
@@ -58,7 +59,7 @@ function HomeAboutus(): JSX.Element {
             <li>
               <a className={styles.item} href="/about/#company">
                 <div className={styles.item__img}>
-                  <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
+                  <div className={`${styles.item__imgIn} ${stylesCom.cImgAni}`}>
                     <Image
                       src="/images/top/about03.jpg"
                       alt="会社情報"
@@ -78,7 +79,7 @@ function HomeAboutus(): JSX.Element {
             <li>
               <a className={styles.item} href="/about/#affiliates">
                 <div className={styles.item__img}>
-                  <div className={`${styles.item__imgIn} ${styles.cImgAni}`}>
+                  <div className={`${styles.item__imgIn} ${stylesCom.cImgAni}`}>
                     <Image
                       src="/images/top/about04.jpg"
                       alt="関連会社"

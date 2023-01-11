@@ -1,1 +1,116 @@
 @import "@/styles/main";
+.secSlideFull {
+  padding-bottom: 120px;
+  .cTtl01 {
+    &__en {
+      @include SP {
+        display: block;
+      }
+    }
+  }
+  @include SP {
+    padding-bottom: 50px;
+  }
+  .innerbox {
+    //padding: 0 25px;
+    overflow: hidden;
+    .swiper-container {
+      overflow: initial;
+    }
+  }
+  .slidebox {
+    overflow: hidden;
+  }
+  .swiper-wrapper{
+    @include flexbox;
+  }
+  .lstItem {
+    margin-top: 55px;
+    @include flexbox();
+    .itemSlide {
+      max-width: 370px;
+      width: 100%;
+      img {
+        width: 100%;
+        height: 100% !important;
+        object-fit: cover;
+      }
+    }
+    @include SP {
+      margin-top: 35px;
+      .item-slide {
+        max-width: 250px;
+      }
+      .itemSlide {
+        max-width: 317px;
+        @media (max-width: 364px){
+          max-width: 100%;
+        }
+      }
+    }
+  }
+  .item {
+    display: block;
+    height: 100%;
+    &__img {
+      overflow: hidden;
+    }
+    &__imgIn {
+      transition: 0.3s;
+      @include SP {
+        height: 100%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__info {
+      background: #f5f5f5;
+      padding: 20px 16px;
+    }
+    &__txtEn {
+      @include font(18, 28px, 0.1em);
+      color: #03728d;
+      @include ffMR;
+      position: relative;
+      &:before {
+        content: "";
+        width: 25px;
+        height: 14px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='14' viewBox='0 0 25 14'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:none;stroke:%2303728d;stroke-linecap:round;stroke-linejoin:round;%7D%3C/style%3E%3C/defs%3E%3Cg transform='translate(-1109 -883.793)'%3E%3Cline class='a' x2='24' transform='translate(1109.5 890.5)'/%3E%3Cpath class='a' d='M0,0,6,6l6-6' transform='translate(1127.5 896.5) rotate(-90)'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        transition: 0.3s;
+      }
+      @include SP {
+        @include font(16, 26px);
+        &:before {
+          right: 0;
+        }
+      }
+    }
+    &__txtJa {
+      @include font(13, 23px, 0.1em);
+      color: #738489;
+      @include SP {
+        @include font(12, 22px);
+      }
+    }
+    @include HOVER {
+      &:hover {
+        opacity: 1;
+        .item__imgIn {
+          transform: scale(1.15);
+        }
+        .item__txtEn:before {
+          transform: translateX(10px);
+        }
+      }
+    }
+  }
+}

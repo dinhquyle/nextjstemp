@@ -1,8 +1,35 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { useEffect } from "react";
+import { Splide, SplideSlide, } from "@splidejs/react-splide";
 import Image from "next/image";
-import styles from "@/styles/page-styles/Home.module.scss";
+import styles from "./HomeMvSlide.module.scss";
 
 function HomeMvSlide(): JSX.Element {
+  useEffect(() => {
+    const _mv = document.getElementById(`sec__mv`);
+    const _isInview = styles.isInview;
+    const body = document.querySelector(`body`);
+
+    if (body != null) {
+      body.classList.add(styles.top);
+    }
+    setTimeout(() => {
+      if (_mv != null) {
+        _mv.classList.add(_isInview);
+      }
+      if (body != null) {
+        body.classList.add(_isInview);
+      }
+    }, 999);
+
+    let height = window.innerHeight;
+    if( window.innerWidth < 1000 ){
+      if(  _mv ){
+        _mv.style.height = height+'px';
+      }
+    }
+    return;
+  }, []);
+
   const scrollingTop = () => {
     const targetElement = document.getElementById(`export`);
     const elmnt = targetElement;

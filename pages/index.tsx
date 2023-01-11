@@ -22,41 +22,6 @@ import { TNextPageWithLayout } from "@/common/types";
 
 const Home: TNextPageWithLayout = (): JSX.Element => {
   gsap.registerPlugin(ScrollTrigger);
-  useEffect(() => {
-    let el = document.querySelector('#jsTest') as HTMLElement | null;
-    if( el ){
-      const ms = el.innerText;
-      for( let i = 0; i < ms.length; i++ ){
-        el.innerHTML += '<span>'+ms[i]+'</span>';
-      }
-    }
-  }, []);
-  
-  useEffect(() => {
-    const _mv = document.getElementById(`sec__mv`);
-    const _isInview = styles.isInview;
-    const body = document.querySelector(`body`);
-
-    if (body != null) {
-      body.classList.add(styles.top);
-    }
-    setTimeout(() => {
-      if (_mv != null) {
-        _mv.classList.add(_isInview);
-      }
-      if (body != null) {
-        body.classList.add(_isInview);
-      }
-    }, 999);
-
-    let height = window.innerHeight;
-    if( window.innerWidth < 1000 ){
-      if(  _mv ){
-        _mv.style.height = height+'px';
-      }
-    }
-    return;
-  }, []);
   
   useEffect(() => {
     const allWithClass = Array.from(
@@ -72,7 +37,7 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
       setTimeout(() => {
         ScrollTrigger.batch(box, {
           toggleClass: styles.isInview,
-          once: true
+          //once: true
         });
       }, 100);
     });

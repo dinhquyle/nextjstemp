@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import styles from "@/styles/page-styles/Home.module.scss";
+import styles from "./HomeNews.module.scss";
 
 function HomeNews(): JSX.Element {
 
   return (
     <>
       <div className={styles.secNews}>
-        <div className={`${styles.container} ${styles.inner}`}>
+        <div className={`container ${styles.inner}`}>
           <div className={styles.cTtl01}>
             <p className={`${styles.cTtl01__en} ${styles.jsSplitText}`}>
               <span className={styles.splitText} id="jsTest">News</span>

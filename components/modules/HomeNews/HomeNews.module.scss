@@ -1,1 +1,26 @@
 @import "@/styles/main";
+.secNews {
+  padding: 62px 0 50px;
+  @include SP {
+    padding-top: 54px;
+  }
+  .inner {
+    position: relative;
+  }
+  .lst01 {
+    margin-top: 40px;
+    @include SP {
+      margin-top: 22px;
+    }
+  }
+  .btn01 {
+    @include PC {
+      position: absolute;
+      top: 5px;
+      right: 25px;
+    }
+    @include SP {
+      margin-top: 30px;
+    }
+  }
+}

@@ -1,1 +1,58 @@
 @import "@/styles/main";
+.secExport {
+  position: relative;
+  z-index: 1;
+  @include PC {
+    padding: 50px 0 100px;
+    min-height: 550px;
+  }
+  @include SP {
+    padding-top: 48px;
+  }
+  .bg01 {
+    background-color: #03728d;
+    position: absolute;
+    top: 120px;
+    bottom: 0;
+    left: 0;
+    right: calc((100% - 1120px) / 2 + 60px);
+    z-index: -1;
+    background: #03728d url(/images/top/export_bg01.jpg) center no-repeat;
+    background-size: cover;
+    @include max-screen(1050px) {
+      right: 25px;
+    }
+
+    @include SP {
+      top: 0;
+      right: 0;
+      bottom: 37px;
+      background: #03728d url(/images/top/export_bg01_sp.jpg) center no-repeat;
+      background-size: cover;
+    }
+  }
+  .inner {
+    @include PC {
+      @include flexbox();
+      @include justify-content(space-between);
+    }
+    &__left {
+      @include PC {
+        width: 275px;
+        padding-top: 162px;
+      }
+    }
+    &__right {
+      @include PC {
+        width: 70%;
+        max-width: 770px;
+      }
+      @include SP {
+        margin-top: 32px;
+      }
+    }
+  }
+  .lst01 {
+    margin-top: 10px;
+  }
+}

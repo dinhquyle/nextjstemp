@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Image from "next/image";
-import styles from "@/styles/page-styles/Home.module.scss";
+import styles from "./HomeItemSlide.module.scss";
+import stylesCom from "@/styles/page-styles/Home.module.scss";
 
 function HomeItemSlide(): JSX.Element {
   const url = "https://6264f60294374a2c506b97c9.mockapi.io/posts";
@@ -21,7 +22,7 @@ function HomeItemSlide(): JSX.Element {
   return (
     <>
       <div className={styles.secSlideFull}>
-        <div className={styles.innerbox}>
+        <div className={stylesCom.innerbox}>
           <div className="cTtl01 cTtl01__2line cTtl01__center">
             <p className="cTtl01__en jsSplitText">
               <span className="splitText">About Us</span>
@@ -31,7 +32,7 @@ function HomeItemSlide(): JSX.Element {
             </h2>
           </div>
           <div
-            className={`${styles.swiperContainer} ${styles.slidebox} ${styles.jsSlideFull}`}
+            className={`${styles.swiperContainer} ${styles.slidebox} ${styles.jsSlideFull} ${stylesCom.cImgAni}`}
           >
             <Splide
               options={{
@@ -53,7 +54,7 @@ function HomeItemSlide(): JSX.Element {
                 className={`${styles.itemSlide} ${styles.swiperSlide}`}
               >
                 <a className={styles.item} href="/about/#philosophy">
-                  <div className={`${styles.item__img} ${styles.cImgAni}`}>
+                  <div className={`${styles.item__img}`}>
                     <div
                       className={`${styles.item__imgIn}`}
                     >                      
