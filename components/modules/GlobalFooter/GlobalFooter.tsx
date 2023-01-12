@@ -28,7 +28,7 @@ function GlobalFooter({}: TGHProps): JSX.Element {
   return (
     <>
       <footer className={`${styles.lFooter} ${styles.cImgAni}`}>
-        <div className={styles.container}>
+        <div className={styles.container} id="fContainer">
           <div className={styles.lFLogo}>
             <Link href="/">
               <a>
@@ -58,7 +58,7 @@ function GlobalFooter({}: TGHProps): JSX.Element {
                 </span>
               </p>
             </a>
-            <a className={`${styles.lFBtn} ${styles.lFBtn02}`} href="/contact/">
+            <a className={`${styles.lFBtn} ${styles.lFBtn02}`} href="/contact">
               <span>Mail Form</span>
             </a>
           </div>
@@ -72,13 +72,13 @@ function GlobalFooter({}: TGHProps): JSX.Element {
                   </Link>
                 </li>
                 <li>
-                  <a href="/about/">会社概要</a>
+                  <a href="/">会社概要</a>
                 </li>
                 <li>
-                  <a href="/history/">井元産業の歴史</a>
+                  <a href="/">井元産業の歴史</a>
                 </li>
                 <li>
-                  <a href="/news/">お知らせ・コラム</a>
+                  <a href="/">お知らせ・コラム</a>
                 </li>
               </ul>
             </div>
@@ -86,19 +86,19 @@ function GlobalFooter({}: TGHProps): JSX.Element {
               <p className={styles.lFGnavi__ttl} onClick={handleSubmenuClick}>海外バイヤーの方へ</p>
               <ul className={styles.lFGnavi__lst}>
                 <li>
-                  <a href="/export_business/">輸出事業</a>
+                  <a href="/">輸出事業</a>
                 </li>
                 <li>
-                  <a href="/export_goods/">輸出商品</a>
+                  <a href="/">輸出商品</a>
                 </li>
               </ul>
               <p className={styles.lFGnavi__ttl} onClick={handleSubmenuClick}>日本国内のバイヤーの方へ</p>
               <ul className={styles.lFGnavi__lst}>
                 <li>
-                  <a href="/import_business/">輸入事業</a>
+                  <a href="/">輸入事業</a>
                 </li>
                 <li>
-                  <a href="/import_goods/">輸入商品</a>
+                  <a href="/">輸入商品</a>
                 </li>
               </ul>
             </div>
@@ -106,16 +106,16 @@ function GlobalFooter({}: TGHProps): JSX.Element {
               <p className={styles.lFGnavi__ttl} onClick={handleSubmenuClick}>その他</p>
               <ul className={styles.lFGnavi__lst}>
                 <li>
-                  <a href="/flow/">取引の流れ</a>
+                  <a href="/">取引の流れ</a>
                 </li>
                 <li>
-                  <a href="/cases/">取引商品・実績</a>
+                  <a href="/">取引商品・実績</a>
                 </li>
                 <li>
-                  <a href="/faq/">よくある質問</a>
+                  <a href="/">よくある質問</a>
                 </li>
                 <li>
-                  <a href="/contact/">お問い合わせ</a>
+                  <a href="/">お問い合わせ</a>
                 </li>
               </ul>
             </div>
@@ -130,10 +130,10 @@ function GlobalFooter({}: TGHProps): JSX.Element {
           <div className={`${styles.container} ${styles.lFBlock01__inner}`}>
             <ul className={styles.lFBlock01__link}>
               <li>
-                <a href="/policy/">PRIVACY POLICY</a>
+                <a href="/">PRIVACY POLICY</a>
               </li>
               <li>
-                <a href="/sitemap/">SITEMAP</a>
+                <a href="/">SITEMAP</a>
               </li>
             </ul>
             <p className={styles.lFBlock01__txt}>

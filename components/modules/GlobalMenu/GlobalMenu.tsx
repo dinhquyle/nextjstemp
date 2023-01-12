@@ -28,12 +28,12 @@ function GlobalMenu(): JSX.Element {
                 <div className={styles.lGnavi__submenu}>
                   <ul>
                     <li>
-                      <a href="/export_business/">
+                      <a href="/">
                         <span>輸出事業</span>
                       </a>
                     </li>
                     <li>
-                      <a href="/export_goods/">
+                      <a href="/">
                         <span>輸出商品</span>
                       </a>
                     </li>
@@ -50,12 +50,12 @@ function GlobalMenu(): JSX.Element {
                 <div className={styles.lGnavi__submenu}>
                   <ul>
                     <li>
-                      <a href="/import_business/">
+                      <a href="/">
                         <span>輸入事業</span>
                       </a>
                     </li>
                     <li>
-                      <a href="/import_goods/">
+                      <a href="/">
                         <span>輸入商品</span>
                       </a>
                     </li>
@@ -63,13 +63,13 @@ function GlobalMenu(): JSX.Element {
                 </div>
               </li>
               <li>
-                <a className={styles.lGnavi__item} href="/flow/">
+                <a className={styles.lGnavi__item} href="/">
                   <span className={styles.lGnavi__txtEn}>Flow</span>
                   <span className={styles.lGnavi__txtJa}>取引の流れ</span>
                 </a>
               </li>
               <li>
-                <a className={styles.lGnavi__item} href="/cases/">
+                <a className={styles.lGnavi__item} href="/">
                   <span className={styles.lGnavi__txtEn}>Cases</span>
                   <span className={styles.lGnavi__txtJa}>取引商品・実績</span>
                 </a>
@@ -84,12 +84,12 @@ function GlobalMenu(): JSX.Element {
                 <div className={styles.lGnavi__submenu}>
                   <ul>
                     <li>
-                      <a href="/about/">
+                      <a href="/">
                         <span>会社概要</span>
                       </a>
                     </li>
                     <li>
-                      <a href="/history/">
+                      <a href="/">
                         <span>歴史</span>
                       </a>
                     </li>
@@ -99,7 +99,7 @@ function GlobalMenu(): JSX.Element {
             </ul>
           </div>
           <div className={styles.lHGnavi__btn}>
-            <a href="/contact/">
+            <a href="/contact">
               <span>Contact</span>
             </a>
           </div>
@@ -115,10 +115,10 @@ function GlobalMenu(): JSX.Element {
             <div className={styles.lMSubmenu}>
               <ul>
                 <li>
-                  <a href="/export_business/">テキスト</a>
+                  <a href="/">テキスト</a>
                 </li>
                 <li>
-                  <a href="/export_goods/">テキスト</a>
+                  <a href="/">テキスト</a>
                 </li>
               </ul>
             </div>
@@ -131,22 +131,22 @@ function GlobalMenu(): JSX.Element {
             <div className={styles.lMSubmenu}>
               <ul>
                 <li>
-                  <a href="/import_business/">テキスト</a>
+                  <a href="/">テキスト</a>
                 </li>
                 <li>
-                  <a href="/import_goods/">テキスト</a>
+                  <a href="/">テキスト</a>
                 </li>
               </ul>
             </div>
           </li>
           <li>
-            <a className={styles.lMGnavi__item} href="/flow/">
+            <a className={styles.lMGnavi__item} href="/">
               <span className={styles.lMGnavi__txtEn}>Flow</span>
               <span className={styles.lMGnavi__txtJa}>取引の流れ</span>
             </a>
           </li>
           <li>
-            <a className={styles.lMGnavi__item} href="/cases/">
+            <a className={styles.lMGnavi__item} href="/">
               <span className={styles.lMGnavi__txtEn}>Cases</span>
               <span className={styles.lMGnavi__txtJa}>取引商品・実績</span>
             </a>
@@ -159,16 +159,16 @@ function GlobalMenu(): JSX.Element {
             <div className={styles.lMSubmenu}>
               <ul>
                 <li>
-                  <a href="/about/">会社概要</a>
+                  <a href="/">会社概要</a>
                 </li>
                 <li>
-                  <a href="/history/">井元産業の歴史</a>
+                  <a href="/">井元産業の歴史</a>
                 </li>
               </ul>
             </div>
           </li>
         </ul>
-        <a className={styles.lMBtn01} href="/contact/">
+        <a className={styles.lMBtn01} href="/">
           <span>Mail Form</span>
         </a>
         <ul className={styles.lMLang}>
