@@ -280,3 +280,25 @@
     }
   }
 }
+.cImgAni {
+  position: relative;
+  display: block;
+  font-size: 0;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    transition: all 1s;
+    //width: 0;
+  }
+}
+.isInview {
+  &:after {
+    width: 0;
+  }
+}

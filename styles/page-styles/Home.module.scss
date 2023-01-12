@@ -11,43 +11,46 @@ Container
   }
 }
 // For Top page
-.top {
-  @-webkit-keyframes scale {
-    0% {
-      -webkit-transform: scale(1.2);
-      transform: scale(1.2);
-      -ms-transform: scale(1.2);
-    }
-
-    to {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      -ms-transform: scale(1);
-    }
+@-webkit-keyframes scale {
+  0% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -ms-transform: scale(1.2);
   }
 
-  @keyframes scale {
-    0% {
-      -webkit-transform: scale(1.2);
-      transform: scale(1.2);
-      -ms-transform: scale(1.2);
-    }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -ms-transform: scale(1);
+  }
+}
 
-    to {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      -ms-transform: scale(1);
+@keyframes scale {
+  0% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -ms-transform: scale(1.2);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -ms-transform: scale(1);
+  }
+}
+.jsSplitText span {
+  opacity: 0;
+  display: inline-block;
+  transform: translate(0, 100%);
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.isInview{
+  @for $i from 1 through 100 {
+    span:nth-child(#{$i}) {
+      opacity: 1;
+      transform: translate(0, 0);
+      transition-delay: $i * 0.05s;
     }
-  }
-  .jsSplitText .splitText > span {
-    opacity: 0;
-    display: inline-block;
-    transform: translate(0, 100%);
-    transition: transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  .jsSplitText .splitText > span.is-active {
-    opacity: 1;
-    transform: translate(0, 0);
   }
 }
 
@@ -215,12 +218,7 @@ Container
     line-height: 1.867;
   }
 }
-.top{
-  overflow: hidden;
-  &.isInview{
-    overflow: auto;
-  }
-}
+
 .cImgAni {
   position: relative;
   display: block;

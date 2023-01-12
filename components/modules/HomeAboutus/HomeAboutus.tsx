@@ -8,10 +8,10 @@ function HomeAboutus(): JSX.Element {
       <div className={styles.secAbout}>
         <div className={stylesCom.container}>
           <div className="cTtl01 cTtl01__2line cTtl01__center">
-            <p className="cTtl01__en jsSplitText">
+            <p className={`${stylesCom.jsSplitText} cTtl01__en`}>
               <span className="splitText">About Us</span>
             </p>
-            <h2 className="cTtl01__ja jsSplitText">
+            <h2 className={`${stylesCom.jsSplitText} cTtl01__ja`}>
               <span className="splitText">井元産業について</span>
             </h2>
           </div>

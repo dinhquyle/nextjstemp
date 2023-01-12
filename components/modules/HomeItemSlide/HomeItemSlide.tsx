@@ -24,15 +24,15 @@ function HomeItemSlide(): JSX.Element {
       <div className={styles.secSlideFull}>
         <div className={stylesCom.innerbox}>
           <div className="cTtl01 cTtl01__2line cTtl01__center">
-            <p className="cTtl01__en jsSplitText">
+            <p className={`cTtl01__en ${stylesCom.jsSplitText}`}>
               <span className="splitText">About Us</span>
             </p>
-            <h2 className="cTtl01__ja jsSplitText">
+            <h2 className={`cTtl01__ja ${stylesCom.jsSplitText}`}>
               <span className="splitText">井元産業について</span>
             </h2>
           </div>
           <div
-            className={`${styles.swiperContainer} ${styles.slidebox} ${styles.jsSlideFull} ${stylesCom.cImgAni}`}
+            className={`${styles.swiperContainer} ${styles.slidebox} ${styles.jsSlideFull}`}
           >
             <Splide
               options={{
@@ -47,7 +47,7 @@ function HomeItemSlide(): JSX.Element {
                   360: { perPage: 1, gap: 0 },
                 },
               }}
-              className={`${styles.lstItem} ${styles.is_slider}`}
+              className={`${styles.lstItem} ${styles.is_slider} ${stylesCom.cImgAni}`}
             >
               {posts.map((post, index) => (
               <SplideSlide key={index}

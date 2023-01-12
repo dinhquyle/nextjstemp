@@ -1,4 +1,5 @@
 import styles from "./HomeNews.module.scss";
+import stylesCom from "@/styles/page-styles/Home.module.scss";
 
 function HomeNews(): JSX.Element {
 
@@ -7,10 +8,10 @@ function HomeNews(): JSX.Element {
       <div className={styles.secNews}>
         <div className={`container ${styles.inner}`}>
           <div className={styles.cTtl01}>
-            <p className={`${styles.cTtl01__en} ${styles.jsSplitText}`}>
-              <span className={styles.splitText} id="jsTest">News</span>
+            <p className={`${styles.cTtl01__en} ${stylesCom.jsSplitText}`}>
+              <span className={styles.splitText}>News</span>
             </p>
-            <h2 className={`${styles.cTtl01__ja} ${styles.jsSplitText}`}>
+            <h2 className={`${styles.cTtl01__ja} ${stylesCom.jsSplitText}`}>
               <span className={styles.splitText}>お知らせ・コラム</span>
             </h2>
           </div>

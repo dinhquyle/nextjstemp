@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
 import styles from "./GlobalFooter.module.scss";
 import Image from "next/image";
@@ -7,26 +9,16 @@ type TGHProps = {
   children?: React.ReactNode;
 };
 function GlobalFooter({}: TGHProps): JSX.Element {
+  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    window.addEventListener(`load`, smoothScroll, false);
-    return;
-  }, []);
-
-  const smoothScroll = () => {
-    document.querySelectorAll(`a[href^="#"]`).forEach((anchor) => {
-      anchor.addEventListener(`click`, function (e) {
-        e.preventDefault();
-        //const target = e.target as HTMLInputElement;
-
-        // if( e.target != null){
-        //   const _anchor = target.hash;
-        //   document.querySelector(_anchor).scrollIntoView({
-        //     behavior: `smooth`
-        //   });
-        // }
+    const box = document.getElementsByClassName(styles.cImgAni)
+    setTimeout(() => {
+      ScrollTrigger.batch(box, {
+        toggleClass: styles.isInview,
+        //once: true
       });
-    });
-  };
+    }, 100);
+  }, []);
   const handleSubmenuClick = (e:any) => {
     e.currentTarget.classList.toggle(styles.isActive);
     if(e.currentTarget.nextElementSibling){

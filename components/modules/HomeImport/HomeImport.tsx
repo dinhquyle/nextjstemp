@@ -15,10 +15,10 @@ function HomeImport(): JSX.Element {
               <div
                 className={`${styles.cTtl01} ${styles.cTtl01__2line} ${styles.cTtl01__white}`}
               >
-                <p className={`${styles.cTtl01__en} ${styles.jsSplitText}`}>
+                <p className={`${styles.cTtl01__en} ${stylesCom.jsSplitText}`}>
                   <span className={styles.splitText}>Import</span>
                 </p>
-                <h2 className={`${styles.cTtl01__ja} ${styles.jsSplitText}`}>
+                <h2 className={`${styles.cTtl01__ja} ${stylesCom.jsSplitText}`}>
                   <span className={styles.splitText}>
                     日本国内のバイヤーの方へ
                   </span>

@@ -171,3 +171,9 @@
     }
   }
 }
+.top{
+  overflow: hidden;
+  &.isInview{
+    overflow: auto;
+  }
+}

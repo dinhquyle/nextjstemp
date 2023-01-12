@@ -43,6 +43,24 @@ const Home: TNextPageWithLayout = (): JSX.Element => {
     });
   }, []);
 
+  useEffect(() => {    
+    const targets = Array.from(
+      document.getElementsByClassName(styles.jsSplitText)
+    );
+    targets.forEach((target, i) => {
+      const str = target.textContent;
+      console.log(str)
+      if( str ){
+        for( let i = 0; i < str.length; i++ ){
+          target.innerHTML = str.replace(/\S/g, '<span>$&</span>')
+        }
+      }      
+      ScrollTrigger.batch(target, {
+        toggleClass: styles.isInview,
+        //once: true
+      });
+    });
+  }, []);
 
   return (
     <>
