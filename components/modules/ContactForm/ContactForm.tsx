@@ -111,7 +111,7 @@ function ContactForm(): JSX.Element {
     address: addressVal,
     tel: telVal,
     email: emailVal,
-    content: contentVal
+    //content: contentVal
   } = validations
   return (
     <>
