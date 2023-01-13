@@ -229,97 +229,6 @@ COMMON
     }
   }
 }
-
-/* mainvisual
-------------------------------------------------------------*/
-.cMv {
-  background-color: #03728D;
-  position: relative;
-  z-index: 1;
-  @include PC {
-    height: 39.063vw;
-    min-height: 500px;
-  }
-  @include SP {
-    height: 117.334vw;
-    min-height: 440px;
-    max-height: 80vh;
-  }
-  &:before {
-    content: "";
-    width: 100%;
-    height: 200px;
-    background-image: linear-gradient(rgba(5, 85, 119, .8), rgba(255, 255, 255, 0));
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-  }
-  &__ttl {
-    position: absolute;
-    bottom: 40px;
-    left: 60px;
-    z-index: 2;
-    @include SP {
-      bottom: 34px;
-      left: 25px;
-    }
-  }
-  &__ttlEn {
-    @include font(44, 1.2276, .16em);
-    color: #fff;
-    @include ffMR;
-    @include SP {
-      @include font(26, 1.385);
-    }
-  }
-  &__ttlJa {
-    margin-top: 8px;
-    @include font(18, 2, .16em);
-    color: #fff;
-    @include SP {
-      @include font(12);
-    }
-  }
-}
-
-/* breadcrumb
-------------------------------------------------------------*/
-.cBreadcrumb {
-  padding: 21px 60px;
-  @include SP {
-    padding: 16px 25px;
-  }
-  ul {
-    @include font(12, 22px, 0);
-    @include SP {
-      line-height: 20px;
-    }
-    li {
-      display: inline;
-      &:not(:first-child) {
-        &:before {
-          content: "";
-          width: 1px;
-          height: 14px;
-          background-color: #03728D;
-          display: inline-block;
-          transform: rotate(40deg);
-          margin: 0 15px 0 16px;
-          position: relative;
-          top: 2px;
-          @include SP {
-            margin: 0 10px 0 9px;
-          }
-        }
-      }
-    }
-  }
-  a, span {
-    color: #03728D;
-  }
-}
-
 /* list
 ------------------------------------------------------------*/
 .cLstNews {
@@ -775,3 +684,29 @@ COMMON
   }
 }
 
+.fieldWrap{
+  position: relative;
+  .fieldRequired{
+    position: absolute;
+    padding: 6px 10px;
+    min-width: 180px;
+    width: auto;
+    color: #fff;
+    background: #252525;
+    font-family: "Lucida Sans Unicode","Lucida Grande",Arial,Helvetica,"ヒラギノ丸ゴ Pro W4",HiraMaruPro-W4,"ヒラギノ角ゴ Pro W3","メイリオ",Meiryo,Osaka,sans-serif;
+    font-size: 11px;
+    margin: 0 0;
+    z-index:1;
+    @include add_prefix(border-radius, 3px);
+    @include add_prefix(box-shadow, 0px 0px 6px #888);
+    top: -35px;
+    left: 0;
+    transition: opacity 0.3s;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .isError{
+    opacity: 1;
+    visibility: visible;
+  }
+}
