@@ -702,11 +702,5 @@ COMMON
     top: -35px;
     left: 0;
     transition: opacity 0.3s;
-    opacity: 0;
-    visibility: hidden;
-  }
-  .isError{
-    opacity: 1;
-    visibility: visible;
   }
 }

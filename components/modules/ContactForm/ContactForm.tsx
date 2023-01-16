@@ -143,7 +143,7 @@ function ContactForm(): JSX.Element {
                   <input type="text" name="company" id="company" className="validate[required] w500" 
                   onChange={handleChange}
                   onBlur={validateOne} />
-                  <div className={`fieldRequired ${isError}`}>{companyVal}</div>
+                  <div className={`fieldRequired`}><span>{companyVal}</span></div>
                 </div>
               </td>
             </tr>
@@ -156,7 +156,7 @@ function ContactForm(): JSX.Element {
                   <input type="text" name="nameuser" id="nameuser" className="validate[required] w500" 
                   onChange={handleChange}
                   onBlur={validateOne} />
-                  <div className={`fieldRequired ${isError}`}>{nameVal}</div>
+                  <div className={`fieldRequired`}><span>{nameVal}</span></div>
                 </div>
               </td>
             </tr>
