@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { customers } from "./customers.js";
 import Image from "next/image";
 import styles from "./ContactForm.module.scss";
-import stylesCom from "@/styles/page-styles/Contact.module.scss";
 
 function ContactForm(): JSX.Element {
   const [values, setValues] = useState({
@@ -12,7 +12,8 @@ function ContactForm(): JSX.Element {
     address: '',
     tel: '',
     email: '',
-    content: ''
+    content: '',
+    customer: ''
   });
   const [validations, setValidations] = useState({
     nameuser: '',
@@ -22,12 +23,13 @@ function ContactForm(): JSX.Element {
     address: '',
     tel: '',
     email: '',
-    content: ''
+    content: '',
+    customer: ''
   })
   const txtRequired = '* 必須項目です';
-  const clsError = 'isError';
+  const [isChedked, setIsChecked] = useState(false);
   const validateAll = () => {
-    const { nameuser, company, branch, zipcode, address, tel, email, content } = values
+    const { nameuser, company, branch, zipcode, address, tel, email, content, customer } = values
     const validations = { 
       nameuser: '', 
       company: '', 
@@ -36,7 +38,8 @@ function ContactForm(): JSX.Element {
       address: '',
       tel: '',
       email: '',
-      content: '' 
+      content: '' ,
+      customer: ''
     }
     let isValid = true    
     if (!nameuser) {
@@ -67,8 +70,16 @@ function ContactForm(): JSX.Element {
       validations.email = txtRequired
       isValid = false
     } 
+    if (email && !/\S+@\S+\.\S+/.test(email)) {
+      validations.email = 'Email format must be as example@mail.com'
+      isValid = false
+    }
     if (!content) {
       validations.content = txtRequired
+      isValid = false
+    }    
+    if (!customer) {
+      validations.customer = txtRequired
       isValid = false
     }    
     if (!isValid) {
@@ -76,7 +87,7 @@ function ContactForm(): JSX.Element {
     }
     return isValid
   }
-  const validateOne = (e: React.FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+  const validateOne = (e: React.FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | any) => {
     const { name } = e.target as HTMLInputElement
     const value = e.currentTarget.value
     let message = ''    
@@ -84,10 +95,36 @@ function ContactForm(): JSX.Element {
      // message = `${name} ${txtRequired}`
       message = txtRequired;
     }
+    if (value && name === 'email' && !/\S+@\S+\.\S+/.test(value)) {
+      message = 'Email format must be as example@mail.com'
+    }
     setValidations({...validations, [name]: message })
-    console.log(values)
+    //console.log(values)   
   }
-  const handleChange = (e: React.FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+
+  const [checkedState, setCheckedState] = useState(
+    new Array(customers.length).fill(false)
+  );
+  const handleOnChange = (position:any) => {
+    let isValid = true
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedState(updatedCheckedState);
+    
+    if( !updatedCheckedState.includes(true) ){
+      isValid = false
+    }
+    else{
+      values.customer = customers[position].value      
+      isValid = false
+    }
+
+    console.log(customerVal)
+    //console.log(isValid)
+    return isValid
+  };
+  const handleChange = (e: React.FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | any) => {
     const { name } = e.target as HTMLInputElement
     const value = e.currentTarget.value
     setValues({...values, [name]: value })
@@ -95,11 +132,12 @@ function ContactForm(): JSX.Element {
     //console.log(name)
   }
   const handleSubmit = (e:any) => {
-    e.preventDefault();
     const isValid = validateAll()    
     if (!isValid) {
+      e.preventDefault();
       return false
     }
+    //handleOnChange(e);
     alert(JSON.stringify(values))
   }
 
@@ -111,11 +149,12 @@ function ContactForm(): JSX.Element {
     address: addressVal,
     tel: telVal,
     email: emailVal,
-    content: contentVal
+    content: contentVal,
+    customer: customerVal
   } = validations
   return (
     <>
-      <form method="post" id="contactform" className={styles.cForm} noValidate autoComplete="off" name="contactform"  onSubmit={handleSubmit}>
+      <form method="post" id="contactform" action="/confirm" className={styles.cForm} noValidate autoComplete="off" name="contactform"  onSubmit={handleSubmit}>
         <div className={styles.stepForm}>
           <p className="pc">
             <Image
@@ -142,38 +181,27 @@ function ContactForm(): JSX.Element {
                 <p><em>必須</em><span>お客様区分</span></p>
               </th>
               <td>
-                <ul className={styles.lstCheck}>
-                  <li>
-                    <label className={styles.checkbox}>
-                      <input type="checkbox" name="customer[]" value="テキストテキスト" className="validate[required]" />
-                      <span>テキスト</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label className={styles.checkbox}>
-                      <input type="checkbox" name="customer[]" value="テキストテキスト" className="validate[required]" />
-                      <span>テキストテキスト</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label className={styles.checkbox}>
-                      <input type="checkbox" name="customer[]" value="テキストテキスト" className="validate[required]" />
-                      <span>テキスト</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label className={styles.checkbox}>
-                      <input type="checkbox" name="customer[]" value="テキストテキスト" className="validate[required]" />
-                      <span>テキストテキスト</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label className={styles.checkbox}>
-                      <input type="checkbox" name="customer[]" value="その他" className="validate[required]" />
-                      <span>その他</span>
-                    </label>
-                  </li>
-                </ul>
+                <div className="fieldWrap">
+                  <ul className={styles.lstCheck}>
+                  {customers.map(({ custommername, value }, i) => {
+                    return (
+                      <li key={i}>
+                        <label className={styles.checkbox} htmlFor={`custom-checkbox-${i}`}>
+                          <input 
+                            type="checkbox" 
+                            id={`custom-checkbox-${i}`}
+                            name={custommername} 
+                            value={value} 
+                            onChange={() => handleOnChange(i)}
+                          />
+                          <span>{value}</span>
+                        </label>
+                      </li>
+                      );
+                    })}
+                  </ul>
+                  <div className={`fieldRequired`}>{customerVal?<span>{txtRequired}</span>:``}</div>
+                </div>
               </td>
             </tr>
             <tr>

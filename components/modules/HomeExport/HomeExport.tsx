@@ -9,7 +9,7 @@ function HomeExport(): JSX.Element {
         <div
           className={`${styles.bg01} ${styles.cLazybg} ${stylesCom.cImgAni} `}
         ></div>
-        <div className={`${stylesCom.container} ${styles.w1120}`}>
+        <div className={`${stylesCom.container} ${stylesCom.w1120}`}>
           <div className={styles.inner}>
             <div className={styles.inner__left}>
               <div
