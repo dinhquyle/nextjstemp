@@ -7,17 +7,37 @@ function ContactForm(): JSX.Element {
   const [values, setValues] = useState({
     nameuser: '',
     company: '',
+    branch: '',
+    zipcode: '',
+    address: '',
+    tel: '',
+    email: '',
+    content: ''
   });
   const [validations, setValidations] = useState({
     nameuser: '',
     company: '',
+    branch: '',
+    zipcode: '',
+    address: '',
+    tel: '',
+    email: '',
+    content: ''
   })
-  const [isError, setError] = useState('')
   const txtRequired = '* 必須項目です';
   const clsError = 'isError';
   const validateAll = () => {
-    const { nameuser, company } = values
-    const validations = { nameuser: '', company: '' }
+    const { nameuser, company, branch, zipcode, address, tel, email, content } = values
+    const validations = { 
+      nameuser: '', 
+      company: '', 
+      branch: '',
+      zipcode: '',
+      address: '',
+      tel: '',
+      email: '',
+      content: '' 
+    }
     let isValid = true    
     if (!nameuser) {
       validations.nameuser = txtRequired
@@ -26,13 +46,33 @@ function ContactForm(): JSX.Element {
     if (!company) {
       validations.company = txtRequired
       isValid = false
+    } 
+    if (!branch) {
+      validations.branch = txtRequired
+      isValid = false
+    } 
+    if (!zipcode) {
+      validations.zipcode = txtRequired
+      isValid = false
+    } 
+    if (!address) {
+      validations.address = txtRequired
+      isValid = false
+    } 
+    if (!tel) {
+      validations.tel = txtRequired
+      isValid = false
+    } 
+    if (!email) {
+      validations.email = txtRequired
+      isValid = false
+    } 
+    if (!content) {
+      validations.content = txtRequired
+      isValid = false
     }    
     if (!isValid) {
       setValidations(validations)
-      setError(clsError)
-    }    
-    else{
-      setError('')
     }
     return isValid
   }
@@ -43,10 +83,6 @@ function ContactForm(): JSX.Element {
     if (!value) {
      // message = `${name} ${txtRequired}`
       message = txtRequired;
-      setError(clsError)
-    }
-    else{
-      setError('')
     }
     setValidations({...validations, [name]: message })
     console.log(values)
@@ -70,6 +106,12 @@ function ContactForm(): JSX.Element {
   const { 
     nameuser: nameVal, 
     company: companyVal,
+    branch: branchVal,
+    zipcode: zipcodeVal,
+    address: addressVal,
+    tel: telVal,
+    email: emailVal,
+    //content: contentVal
   } = validations
   return (
     <>
@@ -143,7 +185,11 @@ function ContactForm(): JSX.Element {
                   <input type="text" name="company" id="company" className="validate[required] w500" 
                   onChange={handleChange}
                   onBlur={validateOne} />
+<<<<<<< HEAD
                   <div className={`fieldRequired`}><span>{companyVal}</span></div>
+=======
+                  <div className={`fieldRequired`}>{companyVal?<span>{companyVal}</span>:``}</div>
+>>>>>>> b60260b4c70e1b965d7e0dd1c7e02d84581b5d67
                 </div>
               </td>
             </tr>
@@ -156,7 +202,11 @@ function ContactForm(): JSX.Element {
                   <input type="text" name="nameuser" id="nameuser" className="validate[required] w500" 
                   onChange={handleChange}
                   onBlur={validateOne} />
+<<<<<<< HEAD
                   <div className={`fieldRequired`}><span>{nameVal}</span></div>
+=======
+                  <div className={`fieldRequired`}>{nameVal?<span>{nameVal}</span>:``}</div>
+>>>>>>> b60260b4c70e1b965d7e0dd1c7e02d84581b5d67
                 </div>
               </td>
             </tr>
@@ -165,7 +215,12 @@ function ContactForm(): JSX.Element {
                 <p><em className="option">任意</em><span>所属部署・役職</span></p>
               </th>
               <td>
-                <input type="text" name="branch" id="branch" className="w500" />
+                <div className="fieldWrap">
+                  <input type="text" name="branch" id="branch" className="w500" 
+                  onChange={handleChange}
+                  onBlur={validateOne} />
+                  <div className={`fieldRequired`}>{branchVal?<span>{branchVal}</span>:``}</div>
+                </div>
               </td>
             </tr>            
             <tr>
@@ -173,7 +228,12 @@ function ContactForm(): JSX.Element {
                 <p><em className="option">任意</em><span>郵便番号</span></p>
               </th>
               <td>
-                <input type="text" name="zipcode" id="zipcode" className="validate[custom[zipcode]] w200" />
+                <div className="fieldWrap">
+                  <input type="text" name="zipcode" id="zipcode" className="validate[custom[zipcode]] w200" 
+                  onChange={handleChange}
+                  onBlur={validateOne} />
+                  <div className={`fieldRequired`}>{zipcodeVal?<span>{zipcodeVal}</span>:``}</div>
+                </div>
               </td>
             </tr>
             <tr>
@@ -181,7 +241,12 @@ function ContactForm(): JSX.Element {
                 <p><em>必須</em><span>会社所在地</span></p>
               </th>
               <td>
-                <input type="text" name="address01" id="address01" className="validate[required]" />
+                <div className="fieldWrap">
+                  <input type="text" name="address" id="address" className="validate[required]" 
+                  onChange={handleChange}
+                  onBlur={validateOne} />
+                  <div className={`fieldRequired`}>{addressVal?<span>{addressVal}</span>:``}</div>
+                </div>
               </td>
             </tr>
             <tr>
@@ -189,7 +254,12 @@ function ContactForm(): JSX.Element {
                 <p><em>必須</em><span>電話番号</span></p>
               </th>
               <td>
-                <input type="tel" name="tel" id="tel" className="validate[required,custom[phone]] w500" />
+                <div className="fieldWrap">
+                  <input type="tel" name="tel" id="tel" className="validate[required,custom[phone]] w500"
+                  onChange={handleChange}
+                  onBlur={validateOne} />
+                  <div className={`fieldRequired`}>{telVal?<span>{telVal}</span>:``}</div>
+                </div>
               </td>
             </tr>
             <tr>
@@ -197,7 +267,12 @@ function ContactForm(): JSX.Element {
                 <p><em>必須</em><span>メールアドレス</span></p>
               </th>
               <td>
-                <input type="email" name="email" id="email" className="validate[required,custom[email]] w500" />
+                <div className="fieldWrap">
+                  <input type="email" name="email" id="email" className="validate[required,custom[email]] w500" 
+                  onChange={handleChange}
+                  onBlur={validateOne} />
+                  <div className={`fieldRequired`}>{emailVal?<span>{emailVal}</span>:``}</div>
+                </div>
               </td>
             </tr>
             <tr>
@@ -205,7 +280,10 @@ function ContactForm(): JSX.Element {
                 <p><em>必須</em><span>お問い合わせ内容</span></p>
               </th>
               <td>
-                <textarea name="content" id="content" className="validate[required]"></textarea>
+                <div className="fieldWrap">
+                  <textarea name="content" id="content" className="validate[required]" />
+                  <div className={`fieldRequired`}>{contentVal?<span>{contentVal}</span>:``}</div>
+                </div>
               </td>
             </tr>
           </tbody>
