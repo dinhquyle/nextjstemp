@@ -76,7 +76,7 @@ function ContactForm(): JSX.Element {
     }
     return isValid
   }
-  const validateOne = (e: React.FormEvent<HTMLInputElement>) => {
+  const validateOne = (e: React.FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name } = e.target as HTMLInputElement
     const value = e.currentTarget.value
     let message = ''    
@@ -87,7 +87,7 @@ function ContactForm(): JSX.Element {
     setValidations({...validations, [name]: message })
     console.log(values)
   }
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name } = e.target as HTMLInputElement
     const value = e.currentTarget.value
     setValues({...values, [name]: value })
@@ -111,7 +111,7 @@ function ContactForm(): JSX.Element {
     address: addressVal,
     tel: telVal,
     email: emailVal,
-    //content: contentVal
+    content: contentVal
   } = validations
   return (
     <>
@@ -185,11 +185,7 @@ function ContactForm(): JSX.Element {
                   <input type="text" name="company" id="company" className="validate[required] w500" 
                   onChange={handleChange}
                   onBlur={validateOne} />
-<<<<<<< HEAD
-                  <div className={`fieldRequired`}><span>{companyVal}</span></div>
-=======
                   <div className={`fieldRequired`}>{companyVal?<span>{companyVal}</span>:``}</div>
->>>>>>> b60260b4c70e1b965d7e0dd1c7e02d84581b5d67
                 </div>
               </td>
             </tr>
@@ -202,11 +198,7 @@ function ContactForm(): JSX.Element {
                   <input type="text" name="nameuser" id="nameuser" className="validate[required] w500" 
                   onChange={handleChange}
                   onBlur={validateOne} />
-<<<<<<< HEAD
-                  <div className={`fieldRequired`}><span>{nameVal}</span></div>
-=======
                   <div className={`fieldRequired`}>{nameVal?<span>{nameVal}</span>:``}</div>
->>>>>>> b60260b4c70e1b965d7e0dd1c7e02d84581b5d67
                 </div>
               </td>
             </tr>
@@ -281,7 +273,8 @@ function ContactForm(): JSX.Element {
               </th>
               <td>
                 <div className="fieldWrap">
-                  <textarea name="content" id="content" className="validate[required]" />
+                  <textarea name="content" id="content" className="validate[required]" onChange={handleChange}
+                  onBlur={validateOne} />
                   <div className={`fieldRequired`}>{contentVal?<span>{contentVal}</span>:``}</div>
                 </div>
               </td>

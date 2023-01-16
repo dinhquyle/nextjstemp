@@ -690,10 +690,8 @@ COMMON
     position: absolute;   
     z-index:1;    
     top: -35px;
-<<<<<<< HEAD
     left: 0;
     transition: opacity 0.3s;
-=======
     left: 0;    
     span{
       padding: 6px 10px;
@@ -707,6 +705,5 @@ COMMON
       @include add_prefix(border-radius, 3px);
       @include add_prefix(box-shadow, 0px 0px 6px #888);
     }
->>>>>>> b60260b4c70e1b965d7e0dd1c7e02d84581b5d67
   }
 }
