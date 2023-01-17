@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { BaseLayout } from "@/components/layouts/BaseLayout/BaseLayout";
 import { FrontLayout } from "@/components/layouts/FrontLayout";
-import { ContactForm } from "@/components/modules/ContactForm";
+import { ConfirmForm } from "@/components/modules/ConfirmForm";
 import styles from "@/styles/page-styles/Contact.module.scss";
 
 // types
@@ -22,10 +22,10 @@ const Contact: TNextPageWithLayout = (): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Contact</title>
+        <title>Confirm</title>
         <meta httpEquiv="expires" content="86400" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="description" content="Contact" />        
+        <meta name="description" content="Mail confirm" />        
       </Head>
       <main id="wrap">
         <div className={`${styles.cMvContact} cMv`}>
@@ -48,21 +48,15 @@ const Contact: TNextPageWithLayout = (): JSX.Element => {
 
         <div className={styles.lForm}>
           <div className="container">
-            <div className={styles.txt01Form}>
-              <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br className="pc" />テキストテキストテキストテキストテキストテキストテキストテキスト</p>
-            </div>
-            <div className={styles.note01Form}>
-              <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-            </div>
             <div className="cTtl01 cTtl01--2line cTtl01--center">
               <p className="cTtl01__en">Mail Form</p>
               <h3 className="cTtl01__ja">メールフォームからのお問い合わせ</h3>
             </div>
             <div className={styles.txt02Form}>
-              <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br />テキストテキストテキストテキストテキストテキスト</p>
+              <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト<br />テキストテキストテキストテキスト</p>
             </div>
             
-            <ContactForm />
+            <ConfirmForm />
 
           </div>
         </div>

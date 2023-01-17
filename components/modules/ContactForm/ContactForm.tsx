@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { customers } from "./customers.js";
+import { ContactContext } from "@/common/contexts/contact-context";
 import Image from "next/image";
 import styles from "./ContactForm.module.scss";
 
 function ContactForm(): JSX.Element {
+
+  const contactContext = useContext(ContactContext);
+  //console.log(contactContext)
+
   const [values, setValues] = useState({
     nameuser: '',
     company: '',
@@ -105,6 +110,7 @@ function ContactForm(): JSX.Element {
   const [checkedState, setCheckedState] = useState(
     new Array(customers.length).fill(false)
   );
+  const [value, setValue] = useState('');
   const handleOnChange = (position:any) => {
     let isValid = true
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -112,16 +118,21 @@ function ContactForm(): JSX.Element {
     );
     setCheckedState(updatedCheckedState);
     
+    let checkVal = [];
+    const checked = position;
     if( !updatedCheckedState.includes(true) ){
-      isValid = false
+      isValid = false      
     }
     else{
       values.customer = customers[position].value      
-      isValid = false
+      isValid = true
+      //console.log(customers[position].value )
+      //console.log(JSON.stringify(customers[position].value))
+      checkVal.push(customers[checked].value)
+      //console.log(customers[checked])
     }
-
-    console.log(customerVal)
-    //console.log(isValid)
+    setIsChecked(!isValid)
+    console.log(checkedState)
     return isValid
   };
   const handleChange = (e: React.FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | any) => {
@@ -138,6 +149,11 @@ function ContactForm(): JSX.Element {
       return false
     }
     //handleOnChange(e);
+    
+   // console.log(isChedked);
+    if( !isChedked ){
+      return false
+    }
     alert(JSON.stringify(values))
   }
 
@@ -200,7 +216,7 @@ function ContactForm(): JSX.Element {
                       );
                     })}
                   </ul>
-                  <div className={`fieldRequired`}>{customerVal?<span>{txtRequired}</span>:``}</div>
+                  <div className={`fieldRequired`}>{isChedked?<span>{txtRequired}</span>:``}</div>
                 </div>
               </td>
             </tr>
