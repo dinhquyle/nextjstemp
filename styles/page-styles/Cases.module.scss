@@ -1,0 +1,234 @@
+@import "@/styles/main";
+
+// BASE ON FORM DEFAULT
+.cMvImport{
+  background: #03728D url(/images/case/main.jpg) center no-repeat;
+  background-size: cover;
+  &:after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+}
+.cases{
+  display: block;
+}
+body{
+  &:has(.DarkModeButton_dark__30uWW){
+    display: none;
+  }
+}
+/*-----------------------------------------------------------
+Container
+------------------------------------------------------------*/
+.img{
+  font-size: 0;
+  span{
+    width: 100%!important;
+    height: 100%!important;
+    object-fit: cover;
+  }
+  img{
+    width: 100%!important;
+    height: 100%!important;
+    object-fit: cover;
+  }
+}
+.container {
+  max-width: 1050px;
+  padding: 0 25px;
+  margin: 0 auto;
+  &.w1120 {
+    max-width: 1170px;
+  }
+}
+.en{
+  @include ffMR;
+}
+@include SP {
+  .c-ttl01__en{
+    @include font(26, 32px, 0.1em);
+  }
+}
+
+.ttlCommon{
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-bottom: 30px;
+  letter-spacing: 0.3em;
+  @include max-screen(767px) {
+    margin-bottom: 25px;
+    font-size: 18px;
+    padding-bottom: 25px;
+  }
+  span{
+    display: inline-block;
+    padding: 0 50px;
+    font-size: 24px;
+    color: #ff4c3b;
+    letter-spacing: 0.05em;    
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    &:before,
+    &:after{
+      content: "";
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: #d4b196;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+    }
+    &:after{
+      right: 0;
+    }
+    &:before{
+      left: 0;
+    }
+    @include max-screen(767px) {
+      font-size: 18px;
+    }
+  }
+}
+.hover_com{
+  @include min-screen(768px) {
+    &:before{
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #2098D1;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transform-origin: 50%;
+      transform-origin: 50%;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
+    }
+    &:hover{
+      opacity: 1;
+      color: #fff;
+      *{
+        color: #fff!important;
+      }
+      &:before{
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+      }
+    }
+  }
+  &.active{
+    color: #fff;
+    background: #2098D1;
+    *{
+      color: #fff!important;
+    }
+    &:before{
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+  }
+}
+
+.masonrybox{
+  margin: 70px 0 150px;
+  padding: 0 15px;
+  .list{
+    letter-spacing: 0;
+    font-size: 0;
+    @include PC{
+      @include flexbox;
+      @include flex-wrap(wrap);
+    }
+    .item{
+      display: inline-block;
+      width: 25%;
+      vertical-align: top;
+      padding: 0 15px;
+      margin-bottom: 30px;
+    }
+    .box{
+      position: relative;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      border-radius: 10px;
+      overflow: hidden;
+      display: block;
+      .img{
+        overflow: hidden;
+        img{
+          display: block;
+          width: 100%;
+          transition: 0.5s;
+        }
+      }
+      .ttl{
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #b8b8b8;
+      }
+      .text{
+        font-size: 14px;
+      }
+      .txtbox{
+        padding: 15px;
+      }
+      &:hover{
+        cursor: pointer;
+        img{
+          -moz-transform: scale(1.1);
+          -moz-transform: scale(1.1);
+          -moz-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  @include max-screen(1200px) {
+    padding: 0 8px;
+    .list{
+      .item{
+        width: 33.33333%;
+        padding: 0 7px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+  @include SP {
+    margin: 50px 0 100px;
+    .list{
+      .item{
+        width: 50%;
+      }
+    }
+  }
+  @include max-screen(478px) {
+    padding: 0 15px;
+    .list{
+      .item{
+        width: 100%;
+        padding: 0;
+      }
+    }
+  }
+}

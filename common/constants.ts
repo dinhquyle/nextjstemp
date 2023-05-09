@@ -11,11 +11,11 @@ export const COLORS: { [key: string]: string } = {
   aliveVGreen: `#00d1b3`,
 };
 
-export const API_URI = process.env.NEXT_PUBLIC_API_URI;
-export const SITE_URI = process.env.NEXT_PUBLIC_SITE_URI;
-export const GQL_URI = process.env.NEXT_PUBLIC_GQL_URI;
-export const BASIC_AUTH = process.env.NEXT_PUBLIC_BASIC_AUTH;
-export const UPLOADS_DIR = process.env.NEXT_PUBLIC_UPLOADS_DIR;
+export const API_URI = process.env.NEXT_PUBLIC_API_URI || ``;
+export const SITE_URI = process.env.NEXT_PUBLIC_SITE_URI || ``;
+export const GQL_URI = process.env.NEXT_PUBLIC_GQL_URI || ``;
+export const BASIC_AUTH = process.env.NEXT_PUBLIC_BASIC_AUTH || ``;
+export const UPLOADS_DIR = process.env.NEXT_PUBLIC_UPLOADS_DIR || ``;
 
 export const POSTS_PER_PAGE = 10;
 

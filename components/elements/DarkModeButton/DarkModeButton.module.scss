@@ -60,12 +60,18 @@
 body.dark{
   background-color: #292c35;
   color: #fff!important;
-  a{
+  a, span{
     color: #fff;
+  }
+  .cBreadcrumb a, .cBreadcrumb span{
+    color: #fff!important;
   }
   .isWhite{
     .lHInner{
       background-color: #292c35!important;
     }
+  }
+  .GlobalHeader_lHeader__jDdhP{
+    background-color: #292c35!important;
   }
 }

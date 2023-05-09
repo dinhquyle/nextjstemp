@@ -50,6 +50,8 @@ Container
       opacity: 1;
       transform: translate(0, 0);
       transition-delay: $i * 0.05s;
+      // transition: opacity 0.8s cubic-bezier(0.26, 0.06, 0, 1),transform 1.2s cubic-bezier(0.36, 0.14, 0, 1);
+      // animation: ani-color-flash 3.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both infinite;
     }
   }
 }

@@ -50,12 +50,12 @@ function GlobalMenu(): JSX.Element {
                 <div className={styles.lGnavi__submenu}>
                   <ul>
                     <li>
-                      <a href="/">
+                      <a href="/import_business">
                         <span>輸入事業</span>
                       </a>
                     </li>
                     <li>
-                      <a href="/">
+                      <a href="/import_goods">
                         <span>輸入商品</span>
                       </a>
                     </li>
@@ -69,7 +69,7 @@ function GlobalMenu(): JSX.Element {
                 </a>
               </li>
               <li>
-                <a className={styles.lGnavi__item} href="/">
+                <a className={styles.lGnavi__item} href="/cases">
                   <span className={styles.lGnavi__txtEn}>Cases</span>
                   <span className={styles.lGnavi__txtJa}>取引商品・実績</span>
                 </a>
@@ -146,7 +146,7 @@ function GlobalMenu(): JSX.Element {
             </a>
           </li>
           <li>
-            <a className={styles.lMGnavi__item} href="/">
+            <a className={styles.lMGnavi__item} href="/cases">
               <span className={styles.lMGnavi__txtEn}>Cases</span>
               <span className={styles.lMGnavi__txtJa}>取引商品・実績</span>
             </a>

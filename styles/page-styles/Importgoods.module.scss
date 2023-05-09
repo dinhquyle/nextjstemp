@@ -1,0 +1,1208 @@
+@import "@/styles/main";
+
+// BASE ON FORM DEFAULT
+.cMvImport{
+  background: #03728D url(/images/import_goods/mv.jpg) center no-repeat;
+  background-size: cover;
+  @include SP{
+    background: #03728D url(/images/import_goods/mv-sp.jpg) center no-repeat;
+    background-size: cover;
+  }
+}
+/*-----------------------------------------------------------
+Container
+------------------------------------------------------------*/
+.container {
+  max-width: 1050px;
+  padding: 0 25px;
+  margin: 0 auto;
+  &.w1120 {
+    max-width: 1170px;
+  }
+}
+.en{
+  @include ffMR;
+}
+@include SP {
+  .c-ttl01__en{
+    @include font(26, 32px, 0.1em);
+  }
+}
+.cItembox{
+  background-color: #fff;
+  padding: 18px 20px 17px;
+  border:2px solid #E7F2F5;
+  color: #03728D;
+  @include SP {
+    padding: 25px 28px 23px;
+    @include max-screen(360px) {
+      padding: 20px;
+    }
+  }
+  @include PC {
+    @include flexbox;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    .ttl{
+      position: relative;
+      width: 40px;
+      padding-right: 22px;
+      &:after{
+        content: "";
+        position: absolute;
+        right: 3px;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background-color: #CDDFEA;
+        display: block;
+      }
+    }
+    .itembox{
+      width: calc(100% - 40px);
+      padding-left: 27px;
+      padding-top: 5px;
+    }
+  }
+  .ttl{
+    @include font(18, 20px);
+    position: relative;
+    @include SP {
+      padding-bottom: 17px;
+      border-bottom: 1px solid #CDDFEA;
+      margin-bottom: 20px;
+    }
+  }
+  .itembox{
+    @include flexbox;
+    @include flex-wrap(wrap);
+    .item{
+      @include SP {
+        margin-bottom: -2px;
+      }
+      @include min-screen(1140px) {
+        &:nth-child(3n+1){
+          max-width: 170px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 100px;
+          width: 100%;
+        }
+        &:nth-child(3n+3),
+        &:last-child{
+          max-width: 180px;
+          width: 100%;
+        }
+      }
+      @include max-screen(1139px) {
+        &:nth-child(odd){
+          width: 40%;
+        }
+        &:nth-child(even){
+          width: 60%;
+        }
+      }
+      @include max-screen(360px) {
+        &:nth-child(odd){
+          width: 45%;
+        }
+        &:nth-child(even){
+          width: 55%;
+        }
+      }
+      &.isfull{
+        max-width: 100%;
+        width: 100%;
+      }
+      span{
+        display: inline-block;
+        position: relative;
+        padding-left: 16px;
+        color: #03728D;
+        @include font(18, 26px, 0);
+        &:before{
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 12px;
+          width: 6px;
+          height: 6px;
+          display: block;
+          background-color: #03728D;
+          @include Safari{
+            top: 10px;
+          }
+        }
+        @include SP {
+          padding-left: 14px;
+          @include font(16, 24px);
+          &:before{
+            top: 10px;
+            @include Safari{
+              top: 8px;
+            }
+          }
+          @include max-screen(360px) {
+            @include font(14, 20px, 0);
+          }
+        }
+      }
+    }
+  }
+  .itembox2{
+    .item{
+      @include min-screen(1140px) {
+        &:nth-child(3n+1){
+          max-width: 172px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 135px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 180px;
+          width: 100%;
+        }
+      }
+      @include max-screen(1139px) {
+        &:nth-child(odd){
+          width: 40%;
+        }
+        &:nth-child(even){
+          width: 60%;
+        }
+        &.is-full{
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .itembox3{
+    .item{
+      @include min-screen(1140px) {
+        &:nth-child(3n+1){
+          max-width: 156px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 155px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 160px;
+          width: 100%;
+        }
+      }
+      @include max-screen(1139px) {
+        &:nth-child(odd){
+          width: 47%;
+        }
+        &:nth-child(even){
+          width: 53%;
+        }
+      }
+    }
+  }
+  .itembox4{
+    .item{
+      @include min-screen(1060px) {
+        &:nth-child(3n+1){
+          max-width: 138px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 102px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 130px;
+          width: 100%;
+        }
+      }
+      @include max-screen(1060px) {
+        &:nth-child(3n+1){
+          max-width: 120px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 90px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 120px;
+          width: 100%;
+        }
+      }
+      @include max-screen(640px) {
+        &:nth-child(3n+1){
+          max-width: 106px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 75px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 70px;
+          width: 100%;
+        }
+      }
+      @include max-screen(360px) {
+        &:nth-child(odd){
+          max-width: 45%;
+          width: 100%;
+        }
+        &:nth-child(even){
+          max-width: 55%;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .itembox5{
+    .item{
+      @include min-screen(1120px) {
+        &:nth-child(3n+1){
+          max-width: 120px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 175px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 130px;
+          width: 100%;
+        }
+      }
+      @include max-screen(1119px) {
+        &:nth-child(3n+1){
+          max-width: 100px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 150px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 80px;
+          width: 100%;
+        }
+      }
+      @include max-screen(640px) {
+        &:nth-child(3n+1){
+          max-width: 78px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 90px;
+          width: 100%;
+          margin-left: 12px;
+        }
+        &:nth-child(2){
+          max-width: calc(100% - 78px);
+          width: 100%;
+          margin-left: 0;
+        }
+        &:nth-child(3n+3){
+          max-width: 78px;
+          width: 100%;
+        }
+      }
+      @include max-screen(360px) {
+        &:nth-child(odd){
+          max-width: 45%;
+          width: 100%;
+          margin-left: 0;
+        }
+        &:nth-child(even){
+          max-width: 55%;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .itembox6{
+    .item{
+      @include min-screen(1070px) {
+        &:nth-child(3n+1){
+          max-width: 155px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 138px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 90px;
+          width: 100%;
+        }
+      }
+      @include max-screen(1069px) {
+        &:nth-child(3n+1){
+          max-width: 130px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 120px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 80px;
+          width: 100%;
+        }
+      }
+      @include max-screen(1020px) {
+        &:nth-child(odd){
+          max-width: 47%;
+          width: 100%;
+        }
+        &:nth-child(even){
+          max-width: 53%;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .itembox7{
+    .item{
+      @include min-screen(1090px) {
+        &:nth-child(3n+1){
+          max-width: 155px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 192px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 60px;
+          width: 100%;
+        }
+      }
+      @include max-screen(1089px) {
+        &:nth-child(3n+1){
+          max-width: 120px;
+          width: 100%;
+        }
+        &:nth-child(3n+2){
+          max-width: 155px;
+          width: 100%;
+        }
+        &:nth-child(3n+3){
+          max-width: 60px;
+          width: 100%;
+        }
+      }
+      @include max-screen(1020px) {
+        &:nth-child(odd){
+          max-width: 47%;
+          width: 100%;
+        }
+        &:nth-child(even){
+          max-width: 53%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.sectionBox1{
+  margin-top: 95px;
+  @include SP {
+    margin-top: 62px;
+  }
+  .inbox{
+    @include PC {
+      padding-left: 60px;
+      @include flexbox;
+      .img{
+        max-width: 380px;
+        width: 100%;
+        margin-top: -10px;
+      }
+      .txtbox{
+        max-width: calc(100% - 380px);
+        width: 100%;
+        padding-right: 80px;
+      }
+    }
+    .img{
+      font-size: 0;
+      span{
+        width: 100%!important;
+        height: 100%!important;
+        object-fit: cover;
+      }
+      img{
+        width: 100%!important;
+        @include SP {
+          height: 100%!important;
+          object-fit: cover;
+        }
+      }
+      @include SP {
+        margin-top: 44px;
+      }
+    }
+    .txtbox{
+      .txt{
+        margin-top: 48px;
+      }
+      .cItembox{
+        margin-top: 32px;
+      }
+      @include SP {
+        .txt{
+          margin-top: 30px;
+          line-height: 28px;
+        }
+        .c-itembox{
+          margin-top: 28px;
+        }
+      }
+    }
+  }
+}
+
+.sectionBox2{
+  position: relative;
+  margin-top: 100px;
+  padding: 100px 0 92px;
+  &:after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: calc( 100% - ((100% - 1120px) / 2) - 200px );
+    background-color: #E7F2F5;
+    display: block;
+    height: 100%;
+    z-index: -1;
+  }
+  @include SP {
+    margin-top: 70px;
+    padding: 52px 0 63px;
+    &:after{
+      width: calc(100% - 95px);
+    }
+  }
+  .container{
+    position: relative;
+    z-index: 1;
+  }
+  .inbox{
+    @include PC {
+      padding-right: 60px;
+    }
+  }
+  .box1{
+    @include PC {
+      @include flexbox;
+      .img{
+        max-width: 380px;
+        width: 100%;
+      }
+      .txtbox{
+        max-width: calc(100% - 380px);
+        width: 100%;
+        padding-left: 80px;
+      }
+    }
+    .img{
+      font-size: 0;
+      span{
+        width: 100%!important;
+        height: 100%!important;
+        object-fit: cover;
+      }
+      img{
+        width: 100%!important;
+        @include SP {
+          height: 100%!important;
+          object-fit: cover;
+        }
+      }
+      @include SP {
+        margin-top: 44px;
+      }
+    }
+    .txtbox{
+      .txt{
+        margin-top: 50px;
+        @include SP {
+          margin-top: 28px;
+        }
+      }
+    }
+    .itemwrap{
+      margin-top: 32px;
+      @include SP {
+        margin-top: 29px;
+        /*margin: 0 -25px;
+        background-color: #fff;
+        padding: 30px 25px;*/
+      }
+    }
+  }
+  .box2{
+    margin-top: 60px;
+    @include PC {
+      padding-left: 60px;
+    }
+    @include SP {
+      margin-top: 45px;
+    }
+    .ttlsub{
+      @include font(20, 32px, 0.05em);
+      color: #03728D;
+      padding-bottom: 13px;
+      position: relative;
+      margin-bottom: 47px;
+      &:before,
+      &:after{
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #03728D;
+        display: block;
+        bottom: 0;
+      }
+      &:after{
+        bottom: -3px;
+      }
+      @include SP {
+        margin-bottom: 37px;
+        @include font(18, 28px);
+        padding-bottom: 10px;
+        @include max-screen(360px) {
+          @include font(16, 26px);
+        }
+      }
+    }
+    .txt{
+      @include SP {
+        line-height: 28px;
+      }
+    }
+  }
+}
+
+.sectionBox3{
+  margin-top: 110px;
+  .c-itembox{
+    padding: 24px 20px 26px;
+  }
+  @include SP {
+    margin-top: 52px;
+    .c-itembox{
+      padding: 25px 28px 23px;
+    }
+  }
+}
+
+.bnrbox {
+  margin-top: 98px;
+  @include SP {
+    margin-top: 70px;
+    .c-ttl01__en{
+      @include font(28, 39px, 0.1em);
+    }
+    .c-ttl01__ja{
+      margin-top: 5px;
+    }
+  }
+  .block01 {
+    display: block;
+    position: relative;
+    overflow: hidden;    
+    .txt{
+      position: absolute;
+      width: 100%;
+      z-index:1;
+      bottom: 48px;
+      right: 0;
+      @include font(18, 32px, 0.05em);
+      color: #fff;
+      text-align: right;
+      padding-right: 140px;
+    }
+    @include PC {
+      width: 100%;
+      height: 400px;
+    }
+    @include SP {
+      height: 240px;
+      .txt{
+        bottom: 30px;
+        right: 0;
+        @include font(14, 22px);
+        padding-right: 90px;
+      }
+    }
+    &__bg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform 0.3s;
+      background: #03728D url(/images/import_goods/bnr.jpg) center no-repeat;
+      background-size: cover;
+      @include SP{
+        background: #03728D url(/images/import_goods/bnr-sp.jpg) center no-repeat;
+        background-size: cover;
+      }
+    }
+    &__bgIn {
+      width: 100%;
+      height: 100%;
+    }
+    &__ttl {
+      position: absolute;
+      top: 50px;
+      left: 80px;
+      z-index: 1;
+      @include SP {
+        top: 30px;
+        left: 30px;
+      }
+    }
+    &__icon {
+      width: 50px;
+      height: 50px;
+      background-color: #fff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='14' viewBox='0 0 25 14'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:none;stroke:%2303728d;stroke-linecap:round;stroke-linejoin:round;%7D%3C/style%3E%3C/defs%3E%3Cg transform='translate(-1109 -883.793)'%3E%3Cline class='a' x2='24' transform='translate(1109.5 890.5)'/%3E%3Cpath class='a' d='M0,0,6,6l6-6' transform='translate(1127.5 896.5) rotate(-90)'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: 0.3s;
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      z-index: 1;
+      @include SP {
+        width: 40px;
+        height: 40px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='12' viewBox='0 0 21 12'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:none;stroke:%2303728d;stroke-linecap:round;stroke-linejoin:round;%7D%3C/style%3E%3C/defs%3E%3Cg transform='translate(0.5 0.707)'%3E%3Cline class='a' x2='20' transform='translate(0 5)'/%3E%3Cpath class='a' d='M0,0,5,5l5-5' transform='translate(15 10) rotate(-90)'/%3E%3C/g%3E%3C/svg%3E");
+        bottom: 30px;
+        right: 30px;
+      }
+    }
+    @include HOVER {
+      &:hover {
+        opacity: 1;
+        .block01__bg {
+          transform: scale(1.15);
+        }
+        .block01__icon {
+          background-color: #03728D;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='14' viewBox='0 0 25 14'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:none;stroke:%23ffffff;stroke-linecap:round;stroke-linejoin:round;%7D%3C/style%3E%3C/defs%3E%3Cg transform='translate(-1109 -883.793)'%3E%3Cline class='a' x2='24' transform='translate(1109.5 890.5)'/%3E%3Cpath class='a' d='M0,0,6,6l6-6' transform='translate(1127.5 896.5) rotate(-90)'/%3E%3C/g%3E%3C/svg%3E");
+        }
+      }
+    }
+  }
+}
+
+.sectionBox4{
+  @include PC {
+    padding-bottom: 100px;
+  }
+  .cItembox{
+    padding: 24px 20px 26px;
+  }
+  @include SP {
+    .cItembox{
+      padding: 25px 28px 23px;
+    }
+    padding-bottom: 70px;
+  }
+  .box1{
+    .img{
+      @include PC {
+        padding-top: 5px;
+      }
+    }
+  }
+}
+.sectionBox5{
+  margin-top: 112px;
+  .cItembox{
+    padding: 24px 20px 26px;
+  }
+  @include SP {
+    margin-top: 52px;
+    .cItembox{
+      padding: 25px 28px 23px;
+    }
+  }
+}
+.sectionBox6{
+  @include PC {
+    padding-top: 110px;
+    padding-bottom: 100px;
+  }
+  .cItembox{
+    padding: 16px 20px;
+  }
+  @include SP {
+    padding-bottom: 70px;
+    .cItembox{
+      padding: 25px 28px 23px;
+    }
+  }
+  .box1{
+    .img{
+      @include PC {
+        margin-top: -11px;
+      }
+    }
+  }
+}
+.sectionBox7{
+  margin-top: 112px;
+  .cItembox{
+    padding: 16px 20px 18px;
+  }
+  @include SP {
+    margin-top: 52px;
+    .cItembox{
+      padding: 25px 28px 23px;
+    }
+  }
+}
+
+.sectionBox8{
+  margin-top: 102px;
+  @include SP {
+    margin-top: 52px;
+  }
+  .itembox{
+    margin-top: 48px;
+    @include SP {
+      margin-top: 40px;
+    }
+    .ttl{
+      @include font(20, 32px, 0.05em);
+      color: #03728D;
+      padding-bottom: 13px;
+      position: relative;
+      margin-bottom: 46px;
+      &:before,
+      &:after{
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #03728D;
+        display: block;
+        bottom: 0;
+      }
+      &:after{
+        bottom: -3px;
+      }
+      @include SP {
+        margin-bottom: 37px;
+        @include font(18, 28px);
+        padding-bottom: 10px;
+        @include max-screen(360px) {
+          @include font(16, 26px);
+        }
+      }
+    }
+    .txtmain{
+      @include SP {
+        line-height: 28px;
+      }
+    }
+    .item{
+      margin-bottom: 95px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+      @include SP {
+        margin-bottom: 45px;
+      }
+    }
+    .box{
+      margin-top: 32px;
+      padding: 47px 48px 40px 58px;
+      border: 2px solid #E7F2F5;
+      @include SP {
+        padding: 30px 28px 22px;
+        margin-top: 22px;
+      }
+      @include PC {
+        @include flexbox;
+        .img{
+          max-width: 220px;
+          width: 100%;
+        }
+        .txtbox{
+          max-width: calc(100% - 220px);
+          width: 100%;
+          padding-right: 60px;
+        }
+        .isfull{
+          max-width: 100%;
+          padding-right: 10px;
+        }
+      }
+      .img{
+        font-size: 0;
+        span{
+          width: 100%!important;
+          height: 100%!important;
+          object-fit: cover;
+        }
+        img{
+          width: 100%!important;
+          @include SP {
+            height: 100%!important;
+            object-fit: cover;
+          }
+        }
+        @include SP {
+          margin-top: 26px;
+        }
+      }
+      .ttlsub{
+        .txt1{
+          display: inline-block;
+          width: 124px;
+          background-color: #03728D;
+          color: #fff;
+          text-align: center;
+          @include font(14, 30px, 0.05em);
+          vertical-align: top;
+          @include Safari{
+            padding-top: 2px;
+          }
+        }
+        .txt2{
+          display: inline-block;
+          padding-left: 8px;
+          color: #03728D;
+          @include font(18, 30px, 0);
+          @include Safari{
+            padding-top: 2px;
+          }
+        }
+        @include SP {
+          .txt1{
+            width: 105px;
+            @include font(12, 24px, 0.05em);
+          }
+          .txt2{
+            display: block;
+            padding-left: 0;
+            @include font(16, 24px, 0);
+            margin-top: 5px;
+          }
+        }
+      }
+      .txt{
+        margin-top: 22px;
+        @include SP {
+          margin-top: 23px;
+          line-height: 28px;
+        }
+      }
+    }
+  }
+}
+
+.clientbox{
+  margin-top: 100px;
+  padding: 90px 0 158px;
+  position: relative;
+  &:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc( 100% - ((100% - 1120px) / 2) - 200px );
+    background-color: #E7F2F5;
+    display: block;
+    height: 100%;
+    z-index: -1;
+  }
+  @include SP {
+    margin-top: 70px;
+    padding: 52px 0 139px;
+    &:after{
+      width: calc(100% - 95px);
+    }
+  }
+  .container{
+    position: relative;
+    z-index: 1;
+  }
+  .listlogo{
+    margin-top: 57px;
+    margin-right: -10px;
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include SP {
+      margin-top: 42px;
+      margin-right: 0;
+    }
+    .item{
+      margin-bottom: 31px;
+      @include PC {
+        width: calc(25% - 10px);
+        margin-right: 10px;
+        &:nth-child(4n){
+          margin-right: 0;
+        }
+      }
+      @include SP {
+        margin-bottom: 16px;
+        width: 50%;
+        &:nth-child(odd){
+          padding-right: 2px;
+        }
+        &:nth-child(even){
+          padding-left: 2px;
+        }
+      }
+    }
+    .inbox{
+      text-align: center;
+      .img{
+        font-size: 0;
+        span{
+          width: 100%!important;
+          height: 100%!important;
+          object-fit: cover;
+        }
+        img{
+          width: 100%!important;
+          @include SP {
+            height: 100%!important;
+            object-fit: cover;
+          }
+        }
+      }
+      .txt{
+        margin-top: 13px;
+        @include font(15, 20px, 0.05em);
+        @include SP {
+          margin-top: 10px;
+          @include font(12, 1, 0);
+        }
+      }
+    }
+  }
+  .listtxt{
+    margin-right: -10px;
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include SP {
+      margin-top: 10px;
+      margin-right: 0;
+    }
+    .item{
+      margin-bottom: 10px;
+      @include PC {
+        width: calc(25% - 10px);
+        margin-right: 10px;
+        &:nth-child(4n){
+          margin-right: 0;
+        }
+      }
+      @include SP {
+        margin-bottom: 5px;
+        width: 50%;
+        &:nth-child(odd){
+          padding-right: 2px;
+        }
+        &:nth-child(even){
+          padding-left: 2px;
+        }
+      }
+    }
+    .txt{
+      background-color: #fff;
+      border: 2px solid #E7F2F5;
+      @include font(15, 30px, 0.05em);
+      padding: 3px 0;
+      text-align: center;
+      @include SP {
+        padding: 4px 0;
+        @include font(12, 20px, 0.05em);
+      }
+    }
+  }
+  .txtnote{
+    margin-top: 6px;
+    @include font(12, 16px, 0.05em);
+  }
+}
+
+.import_goods{
+  .cItembox{
+    .itembox1{
+      .item{
+        @include min-screen(1140px) {
+          &:nth-child(3n+1){
+            max-width: 174px;
+            width: 100%;
+          }
+          &:nth-child(3n+2){
+            max-width: 157px;
+            width: 100%;
+          }
+          &:nth-child(3n+3){
+            max-width: 130px;
+            width: 100%;
+          }
+        }
+        @include max-screen(1139px) {
+          &:nth-child(odd){
+            width: 47%;
+          }
+          &:nth-child(even){
+            width: 53%;
+          }
+        }
+      }
+    }
+    .itembox2{
+      .item{
+        @include min-screen(1140px) {
+          &:nth-child(4n+1){
+            max-width: 82px;
+            width: 100%;
+          }
+          &:nth-child(4n+2){
+            max-width: 100px;
+            width: 100%;
+          }
+          &:nth-child(4n+3){
+            max-width: 172px;
+            width: 100%;
+          }
+          &:nth-child(4n+4){
+            max-width: 110px;
+            width: 100%;
+          }
+        }
+        @include max-screen(1139px) {
+          &:nth-child(odd){
+            width: 40%;
+          }
+          &:nth-child(even){
+            width: 60%;
+          }
+        }
+      }
+    }
+    .itembox3{
+      .item{
+        @include min-screen(1140px) {
+          &:nth-child(3n+1){
+            max-width: 192px;
+            width: 100%;
+          }
+          &:nth-child(3n+2){
+            max-width: 192px;
+            width: 100%;
+          }
+          &:nth-child(3n+3){
+            max-width: 85px;
+            width: 100%;
+          }
+        }
+        @include max-screen(1139px) {
+          &:nth-child(odd){
+            width: 40%;
+          }
+          &:nth-child(even){
+            width: 60%;
+          }
+        }
+      }
+    }
+  }
+  .sectionBox2 {
+    @include PC {
+      padding-bottom: 99px;
+    }
+    @include SP {
+      padding-bottom: 70px;
+    }
+    .box1 {
+      .txtbox{
+        @include PC {
+          padding-top: 8px;
+        }
+      }
+    }
+    .cItembox{
+      padding: 24px 20px 25px;
+      @include SP {
+        padding: 25px 28px 23px;
+        .item{
+          &:nth-child(odd){
+            width: 58.5%;
+          }
+          &:nth-child(even){
+            width: 41.5%;
+          }
+        }
+      }
+    }
+  }
+  .bnrbox{
+    @include PC {
+      margin-top: 100px;
+    }
+  }
+  .clientbox .listtxt{
+    @include PC {
+      margin-top: -4px;
+    }
+  }
+  .sectionBox3{
+    @include SP {
+      .c-itembox{
+        .itembox3{
+          .item{
+            &:nth-child(odd){
+              width: 52%;
+            }
+            &:nth-child(even){
+              width: 48%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .sectionBox8 .itembox .box {
+    @include SP {
+      padding: 27px 28px 20px;
+    }
+  }
+  .clientbox{
+    @include SP {
+      .listlogo{
+        margin-top: 46px;
+        .item{
+          margin-bottom: 19px;
+        }
+      }
+      .listtxt{
+        margin-top: -1px;
+      }
+    }
+  }
+}

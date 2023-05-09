@@ -1,6 +1,7 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import Head from "next/head";
+import { UserContext } from "@/common/contexts/user-context";
 import { BaseLayout } from "@/components/layouts/BaseLayout/BaseLayout";
 import { FrontLayout } from "@/components/layouts/FrontLayout";
 import { ContactForm } from "@/components/modules/ContactForm";
@@ -16,9 +17,13 @@ const Contact: TNextPageWithLayout = (): JSX.Element => {
     if (body != null) {
       body.classList.add('contact');
     }
+
     return;
   }, []);
   
+  const user = useContext(UserContext);
+  console.log(user); // { name: 'Ustat', age: 24 }
+
   return (
     <>
       <Head>

@@ -18,6 +18,20 @@ COMMON
 
 /* title
 ------------------------------------------------------------*/
+@include keyframes("ani-color-flash") {
+  0% {
+    color: #03728D;
+  }
+  12.5% {
+    color: #cfa254;
+  }
+  25% {
+    color: #03728D;
+  }
+  100% {
+    color: #03728D;
+  }
+}
 .cTtl01 {
   &__en {
     display: inline-block;
