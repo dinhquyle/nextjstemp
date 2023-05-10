@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useEffect } from "react";
-import Link from 'next/link';
 import Head from "next/head";
 import Image from "next/image";
 import { BaseLayout } from "@/components/layouts/BaseLayout/BaseLayout";
@@ -9,7 +8,6 @@ import { TProduct } from "@/common/contexts/AppContext";
 import styles from "@/styles/page-styles/Cases.module.scss";
 
 // types
-import { TNextPageWithLayout } from "@/common/types";
 import { GetStaticProps } from "next";
 import { GQL_URI } from "@/common/constants";
 
@@ -17,7 +15,6 @@ type TCaseProps = {
   caseList: Array<TProduct>;
 }
 
-//const Cases: TNextPageWithLayout = (): JSX.Element => {
 const Cases = ({ caseList }: TCaseProps) => {
   useEffect(() => {
     const body = document.querySelector(`body`);
@@ -61,7 +58,7 @@ const Cases = ({ caseList }: TCaseProps) => {
           <div className={styles.list}>
           {caseList.map((product) => (
             <div className={styles.item} key={product.caseId}>
-            <a href={product.url} className={styles.box}>
+            <a href={product.uri} className={styles.box}>
                 <p className={styles.img}>
                   <Image
                     src={product.featuredImage.node.sourceUrl}

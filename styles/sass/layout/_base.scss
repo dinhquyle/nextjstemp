@@ -421,6 +421,7 @@ common
   @include PC {
     height: 39.063vw;
     min-height: 500px;
+    max-height: 640px;
   }
   @include SP {
     height: 117.334vw;
