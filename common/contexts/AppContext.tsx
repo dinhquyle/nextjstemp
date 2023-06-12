@@ -12,6 +12,7 @@ export type TProduct = {
     nodes: {
       name: string;
       slug: string;
+      id: string;
     }
   }
 };

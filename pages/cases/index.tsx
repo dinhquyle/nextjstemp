@@ -69,7 +69,7 @@ const Cases = ({ caseList }: TCaseProps) => {
                 <div className={styles.txtbox}>
                   <p className={styles.txtcat}>
                     {product.categoriesCase.nodes.map((cat: any) => (
-                      <span>{cat.name}</span>
+                      <span key={cat.id}>{cat.name}</span>
                     ))}
                   </p>
                   <h3 className={styles.ttl}>{product.title}</h3>
@@ -118,6 +118,7 @@ export const getStaticProps: GetStaticProps = async () => {
                 nodes {
                   name
                   slug
+                  id
                 }
               }
             }
