@@ -43,8 +43,8 @@ const CaseDetail = ({ product }: { product: any}) => {
               <div className={styles.innerbox} key={item.caseId}>
                 <h3 className={styles.ttl}>{item.title}</h3>
                 <p className={styles.txtcat}>
-                  {item.categoriesCase.nodes.map((cat) => (
-                    <span>{cat.name}</span>
+                  {item.categoriesCase.nodes.map((cat: any) => (
+                    <span key={cat.id}>{cat.name}</span>
                   ))}
                 </p>
                 <p className={styles.img}>
@@ -152,6 +152,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
                 nodes {
                   name
                   slug
+                  id
                 }
               }
             }
