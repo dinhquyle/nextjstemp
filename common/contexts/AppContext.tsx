@@ -8,4 +8,10 @@ export type TProduct = {
       sourceUrl: string;
     }
   }
+  categoriesCase: {
+    nodes: {
+      name: string;
+      slug: string;
+    }
+  }
 };

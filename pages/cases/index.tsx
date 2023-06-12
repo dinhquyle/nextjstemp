@@ -25,7 +25,6 @@ const Cases = ({ caseList }: TCaseProps) => {
 
     return;
   }, []);
-
   return (
     <>
       <Head>
@@ -68,6 +67,11 @@ const Cases = ({ caseList }: TCaseProps) => {
                   />
                 </p>
                 <div className={styles.txtbox}>
+                  <p className={styles.txtcat}>
+                    {product.categoriesCase.nodes.map((cat: any) => (
+                      <span>{cat.name}</span>
+                    ))}
+                  </p>
                   <h3 className={styles.ttl}>{product.title}</h3>
                   <div className={styles.text}>{product.content.replace(/(<([^>]+)>)/gi, "")}</div>
                 </div>
@@ -110,6 +114,12 @@ export const getStaticProps: GetStaticProps = async () => {
                   sourceUrl
                 }
               }
+              categoriesCase {
+                nodes {
+                  name
+                  slug
+                }
+              }
             }
           }
         }`,
@@ -118,10 +128,10 @@ export const getStaticProps: GetStaticProps = async () => {
     });
     if(res.ok){
       const data = await res.json();
-
       if(data.errors) {
         throw new Error(`Error fetch Cases $(data.errors[0].message)`);
       }
+      console.log(data.data.cases.nodes)
       return {
         props: {
           caseList: data.data.cases.nodes,

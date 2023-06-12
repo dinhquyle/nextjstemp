@@ -8,14 +8,8 @@ import { FrontLayout } from "@/components/layouts/FrontLayout";
 import styles from "@/styles/page-styles/Cases.module.scss";
 
 import Head from "next/head";
-import { TProduct } from "@/common/contexts/AppContext";
-
-type TCaseProps = {
-  caseList: Array<TProduct>;
-}
 
 const CaseDetail = ({ product }: { product: any}) => {
-  console.log(product)
   return (
     <>
       <Head>
@@ -48,6 +42,11 @@ const CaseDetail = ({ product }: { product: any}) => {
             {product.map((item: any) => (
               <div className={styles.innerbox} key={item.caseId}>
                 <h3 className={styles.ttl}>{item.title}</h3>
+                <p className={styles.txtcat}>
+                  {item.categoriesCase.nodes.map((cat) => (
+                    <span>{cat.name}</span>
+                  ))}
+                </p>
                 <p className={styles.img}>
                   <Image
                     src={item.featuredImage.node.sourceUrl}
@@ -130,7 +129,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     if( !params ) throw new Error(`Missing params`); 
     let { id } = params;
     if( !id ) throw new Error(`Missing slug`); 
-    id = id.toString().replace("p", " ");
+    id = id.toString().replace("p", "");
     const res = await fetch(GQL_URI, {
       method: `POST`,
       headers: {
@@ -147,6 +146,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
               featuredImage {
                 node {
                   sourceUrl
+                }
+              }
+              categoriesCase {
+                nodes {
+                  name
+                  slug
                 }
               }
             }

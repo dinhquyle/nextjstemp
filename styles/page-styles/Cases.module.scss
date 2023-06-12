@@ -232,20 +232,39 @@ Container
     }
   }
 }
-
+.txtcat{
+  margin-bottom: 5px;
+  span{
+    display: inline-block;
+    margin-right: 5px;
+    background-color: #03728D;
+    color: #fff;
+    text-align: center;
+    padding: 3px 5px 5px;
+    border-radius: 3px;
+    @include font(13, 1, 0.05em, 600);
+    &:last-child{
+      margin-top: 0;
+    }
+  }
+}
 .single{
   .innerbox{
     max-width: 1280px;
     width: 100%;
     margin: 0 auto;
   }
+  .txtcat{
+    margin-bottom: 50px; text-align: center;
+    @include SP{
+      margin-bottom: 30px;
+    }
+  }
   .ttl{
     text-align: center;
     @include font(24, 38px, 0.05em, 600);
-    margin-bottom: 50px;
     @include SP{
       @include font(20, 30px, 0.05em, 600);
-      margin-bottom: 30px;
     }
   }
   .txtbox{
