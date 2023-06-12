@@ -46,7 +46,7 @@ const CaseDetail = ({ product }: { product: any}) => {
           <h2 className={`${styles.ttlCommon} ${styles.en}`}>CASES<span><i className={`${styles.fa} ${styles.fa_instagram}`} aria-hidden="true">*</i></span></h2>
           <div className={styles.single}>
             {product.map((item: any) => (
-              <div className={styles.innerbox}>
+              <div className={styles.innerbox} key={item.caseId}>
                 <h3 className={styles.ttl}>{item.title}</h3>
                 <p className={styles.img}>
                   <Image
