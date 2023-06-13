@@ -71,6 +71,7 @@ const Cases = ({ caseList }: TCaseProps) => {
                     {product.categoriesCase.nodes.map((cat: any) => (
                       <span key={cat.id}>{cat.name}</span>
                     ))}
+                    <span className={styles.txtdate}>{new Date(product.date).toISOString().split('T')[0].replace(/-/g, ".")}</span>
                   </p>
                   <h3 className={styles.ttl}>{product.title}</h3>
                   <div className={styles.text}>{product.content.replace(/(<([^>]+)>)/gi, "")}</div>
@@ -121,6 +122,7 @@ export const getStaticProps: GetStaticProps = async () => {
                   id
                 }
               }
+              date
             }
           }
         }`,

@@ -234,6 +234,7 @@ Container
 }
 .txtcat{
   margin-bottom: 5px;
+  position: relative;
   span{
     display: inline-block;
     margin-right: 5px;
@@ -246,6 +247,13 @@ Container
     &:last-child{
       margin-top: 0;
     }
+  }
+  .txtdate{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+    color: #03728D;
   }
 }
 .single{

@@ -15,4 +15,5 @@ export type TProduct = {
       id: string;
     }]
   }
+  date: string;
 };
