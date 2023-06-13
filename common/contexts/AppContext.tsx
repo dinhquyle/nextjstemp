@@ -9,10 +9,10 @@ export type TProduct = {
     }
   }
   categoriesCase: {
-    nodes: {
+    nodes: [{
       name: string;
       slug: string;
       id: string;
-    }
+    }]
   }
 };

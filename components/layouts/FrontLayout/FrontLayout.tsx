@@ -17,7 +17,6 @@ const FrontLayout = ({ children }: TFLProps): JSX.Element => {
       <Head>
         <title>{SITE_CONFIG.title}</title>
         <meta name="description" content={SITE_CONFIG.description} />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" media="all"></link>
       </Head>
       <GlobalHeader>
         <Logo />
