@@ -1,18 +1,31 @@
-// types
 import * as React from "react";
+import { useEffect } from "react";
+import Head from "next/head";
 import Image from "next/image";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { GQL_URI } from "@/common/constants";
-import { BaseLayout } from "@/components/layouts/BaseLayout";
+import { BaseLayout } from "@/components/layouts/BaseLayout/BaseLayout";
 import { FrontLayout } from "@/components/layouts/FrontLayout";
+import { CasebyCat } from "@/common/contexts/AppContext";
 import styles from "@/styles/page-styles/Cases.module.scss";
 
-import Head from "next/head";
+// types
+import { GetStaticPaths, GetStaticProps } from "next";
+import { GQL_URI } from "@/common/constants";
+type TCaseProps = {
+  caseList: Array<CasebyCat>;
+  slug: string;
+}
+const CaseArchive = ({ caseList, slug }: TCaseProps) => {
+  useEffect(() => {
+    const body = document.querySelector(`body`);
 
-const CaseDetail = ({ product }: { product: any}) => {
+    if (body != null) {
+      body.classList.add(styles.cases);
+    }
+    return;
+  }, []);
   return (
     <>
-      <Head>
+    <Head>
         <title>Cases</title>
         <meta httpEquiv="expires" content="86400" />
         <meta name="format-detection" content="telephone=no" />
@@ -21,7 +34,7 @@ const CaseDetail = ({ product }: { product: any}) => {
       <main id="wrap">
         <div className={`${styles.cMvImport} cMv`}>
           <div className="cMv__ttl">
-            <p className="cMv__ttlen">Cases</p>
+            <p className="cMv__ttlen">Cases Category</p>
             <h2 className="cMv__ttlja">取引商品・実績</h2>
           </div>
         </div>
@@ -32,21 +45,20 @@ const CaseDetail = ({ product }: { product: any}) => {
               <a href="/">ホーム</a>
             </li>
             <li>
-              <span>取引商品・実績</span>
+              <a href="/cases/">取引商品・実績</a>
+            </li>
+            <li>
+              <span>{slug}</span>
             </li>
           </ul>
         </div>
+
         <section className={styles.masonrybox}>
           <h2 className={`${styles.ttlCommon} ${styles.en}`}>CASES<span><i className={`${styles.fa} ${styles.fa_instagram}`} aria-hidden="true">*</i></span></h2>
-          <div className={styles.single}>
-            {product.map((item: any) => (
-              <div className={styles.innerbox} key={item.caseId}>
-                <h3 className={styles.ttl}>{item.title}</h3>
-                <p className={styles.txtcat}>
-                  {item.categoriesCase.nodes.map((cat: any) => (
-                    <span key={cat.id}>{cat.name}</span>
-                  ))}
-                </p>
+          <div className={styles.list}>
+          {caseList.map((item, i) => (
+            <div className={styles.item} key={i}>
+            <a href={item.uri} className={styles.box}>
                 <p className={styles.img}>
                   <Image
                     src={item.featuredImage.node.sourceUrl}
@@ -55,28 +67,34 @@ const CaseDetail = ({ product }: { product: any}) => {
                     height={460}
                   />
                 </p>
-                <div className={styles.txtbox}>                
+                <div className={styles.txtbox}>
+                  <p className={styles.txtcat}>
+                    {item.categoriesCase.nodes.map((cat: any) => (
+                      <span key={cat.id}>{cat.name}</span>
+                    ))}
+                    <span className={styles.txtdate}>{new Date(item.date).toISOString().split('T')[0].replace(/-/g, ".")}</span>
+                  </p>
+                  <h3 className={styles.ttl}>{item.title}</h3>
                   <div className={styles.text}>{item.content.replace(/(<([^>]+)>)/gi, "")}</div>
                 </div>
-              </div>
-            ))}
-            <div className={styles.txtBack}>
-              <a href="/cases/" className={styles.box}>一覧に戻る</a>
+              </a>
             </div>
+          ))}
           </div>
         </section>
+
       </main>
     </>
   )
 };
-
-CaseDetail.getLayout = function getLayout(page: React.ReactElement) {
+CaseArchive.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <BaseLayout>
       <FrontLayout>{page}</FrontLayout>
     </BaseLayout>
   );
 };
+
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths:Array<any>;
   try{
@@ -86,23 +104,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
         "content-type": `application/json`,        
       },
       body: JSON.stringify({
-        query: `query getCasesId {
-          cases {
+        query: `query getCategory {
+          categoriesCase {
             nodes {
-              caseId
+              slug
             }
           }
         }`,
-        operationName: `getCasesId`,
+        operationName: `getCategory`,
       })
     });
     const data = await res.json();
-    
     if(res.ok){      
-      paths = data.data.cases.nodes.map((item: any) => {
+      paths = data.data.categoriesCase.nodes.map((item: any) => {
         return {
           params: {
-            id: item.caseId.toString(), 
+            slug: item.slug, 
           }
         }
       });
@@ -126,38 +143,41 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   try{
     if( !params ) throw new Error(`Missing params`); 
-    let { id } = params;
-    if( !id ) throw new Error(`Missing slug`); 
-    id = id.toString().replace("p", "");
+    let { slug } = params;
+    if( !slug ) throw new Error(`Missing slug`); 
     const res = await fetch(GQL_URI, {
       method: `POST`,
       headers: {
         "content-type": `application/json`,        
       },
       body: JSON.stringify({
-        query: `query getCasesById {
-          cases(where: {id: ${id}}) {
+        query: `query getCasesByCategory {
+          categoriesCase(where: {slug: "${slug}"}) {
             nodes {
-              caseId
-              title
-              content
-              uri
-              featuredImage {
-                node {
-                  sourceUrl
-                }
-              }
-              categoriesCase {
+              cases {
                 nodes {
-                  name
-                  slug
-                  id
+                  title
+                  content
+                  uri
+                  date
+                  featuredImage {
+                    node {
+                      sourceUrl
+                    }
+                  }
+                  categoriesCase {
+                    nodes {
+                      id
+                      name
+                      uri
+                    }
+                  }
                 }
               }
             }
           }
         }`,
-        operationName: `getCasesById`,
+        operationName: `getCasesByCategory`,
       })
     });
     if(res.ok){
@@ -167,11 +187,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
       }
       return {
         props: {
-          product: data.data.cases.nodes,
+          caseList: data.data.categoriesCase.nodes[0].cases.nodes,
+          slug: slug,
         }
       }
-
-      
     } else{
       const message = await res.json();
       throw new Error(`Error fetch Cases $(message.message)`);
@@ -183,4 +202,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 };
 
-export default CaseDetail;
+export default CaseArchive;

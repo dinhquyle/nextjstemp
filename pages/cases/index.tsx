@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { BaseLayout } from "@/components/layouts/BaseLayout/BaseLayout";
 import { FrontLayout } from "@/components/layouts/FrontLayout";
-import { TProduct } from "@/common/contexts/AppContext";
+import { CaseCat, Casepaging, TProduct } from "@/common/contexts/AppContext";
 import styles from "@/styles/page-styles/Cases.module.scss";
 
 // types
@@ -13,9 +13,10 @@ import { GQL_URI } from "@/common/constants";
 
 type TCaseProps = {
   caseList: Array<TProduct>;
+  caseCat: Array<CaseCat>;
 }
 
-const Cases = ({ caseList }: TCaseProps) => {
+const Cases = ({ caseList, caseCat }: TCaseProps) => {
   useEffect(() => {
     const body = document.querySelector(`body`);
 
@@ -54,6 +55,11 @@ const Cases = ({ caseList }: TCaseProps) => {
 
         <section className={styles.masonrybox}>
           <h2 className={`${styles.ttlCommon} ${styles.en}`}>CASES<span><i className={`${styles.fa} ${styles.fa_instagram}`} aria-hidden="true">*</i></span></h2>
+          <div className={styles.listCat}>
+          {caseCat.map((cat: any) => (
+            <p className={styles.cat} key={cat.id}><a href={cat.uri.replace(/dinhquy/g, "cases")}>{cat.name}</a></p>
+          ))}
+          </div>
           <div className={styles.list}>
           {caseList.map((product) => (
             <div className={styles.item} key={product.caseId}>
@@ -110,6 +116,7 @@ export const getStaticProps: GetStaticProps = async () => {
               title
               content
               uri
+              date 
               featuredImage {
                 node {
                   sourceUrl
@@ -118,11 +125,26 @@ export const getStaticProps: GetStaticProps = async () => {
               categoriesCase {
                 nodes {
                   name
-                  slug
+                  uri
                   id
                 }
+              }     
+            }
+            pageInfo {
+              hasNextPage
+              hasPreviousPage
+              offsetPagination {
+                hasMore
+                hasPrevious
+                total
               }
-              date
+            }
+          }
+          categoriesCase {
+            nodes {
+              id
+              uri
+              name
             }
           }
         }`,
@@ -134,11 +156,11 @@ export const getStaticProps: GetStaticProps = async () => {
       if(data.errors) {
         throw new Error(`Error fetch Cases $(data.errors[0].message)`);
       }
-      console.log(data.data.cases.nodes)
       return {
         props: {
           caseList: data.data.cases.nodes,
-        }
+          caseCat: data.data.categoriesCase.nodes,
+        },
       }
     } else{
       const message = await res.json();

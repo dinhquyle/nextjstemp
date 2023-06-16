@@ -189,6 +189,7 @@ Container
       }
       .text{
         font-size: 14px;
+        @include multiLineEllipsis(2);
       }
       .txtbox{
         padding: 15px;
@@ -255,6 +256,20 @@ Container
     background-color: transparent;
     color: #03728D;
   }
+}
+.listCat{
+  margin-bottom: 50px;
+  @include flexbox;
+  justify-content: center;
+  a{
+    display: inline-block;
+    @include font(14, 1, 0.05em);
+    color: #fff;
+    background-color: #03728D;
+    border-radius: 3px;
+    padding: 4px 5px 5px;
+  }
+  .cat{padding: 0 5px;}
 }
 .single{
   .innerbox{
