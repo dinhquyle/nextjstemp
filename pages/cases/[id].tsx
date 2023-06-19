@@ -10,6 +10,7 @@ import styles from "@/styles/page-styles/Cases.module.scss";
 import Head from "next/head";
 
 const CaseDetail = ({ product }: { product: any}) => {
+  let noImg = "/images/common/other/img_nophoto.jpg"
   return (
     <>
       <Head>
@@ -50,14 +51,31 @@ const CaseDetail = ({ product }: { product: any}) => {
                     <span key={cat.id}>{cat.name}</span>
                   ))}
                 </p>
-                <p className={styles.img}>
-                  <Image
-                    src={item.featuredImage.node.sourceUrl}
-                    alt=""
-                    width={460}
-                    height={460}
-                  />
-                </p>
+                {
+                item.featuredImage != null ? (
+                  <p className={styles.img}>
+                    <Image
+                      src={item.featuredImage.node.sourceUrl}
+                      alt=""
+                      width={460}
+                      height={460}
+                    />
+                  </p>
+                ) : ( 
+                  item.mainImg.mainImage != null ? (
+                    <p className={styles.img}>
+                      <Image
+                        src={item.mainImg.mainImage.sourceUrl}
+                        alt=""
+                        width={460}
+                        height={460}
+                      />
+                    </p>
+                  ) : (
+                    <span></span>
+                  )
+                ) 
+              }
                 <div className={styles.txtbox}>                
                   <div className={styles.text}>{item.content.replace(/(<([^>]+)>)/gi, "")}</div>
                 </div>
@@ -157,6 +175,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
                   id
                 }
               }
+              mainImg {
+                mainImage {
+                  sourceUrl
+                }
+              }     
             }
           }
         }`,

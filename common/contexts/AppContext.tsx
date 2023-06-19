@@ -9,6 +9,11 @@ export type TProduct = {
       sourceUrl: string;
     }
   }
+  mainImg: {
+    mainImage: {
+      sourceUrl: string;
+    }
+  }
   categoriesCase: {
     nodes: [{
       name: string;
@@ -45,6 +50,11 @@ export type CasebyCat = {
   date: string;
   featuredImage: {
     node: {
+      sourceUrl: string;
+    }
+  }
+  mainImg: {
+    mainImage: {
       sourceUrl: string;
     }
   }

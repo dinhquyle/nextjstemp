@@ -17,7 +17,8 @@ type TCaseProps = {
 }
 
 const Cases = ({ caseList, caseCat }: TCaseProps) => {
-  console.log(caseList)
+  console.log(caseList);
+  let noImg = "/images/common/other/img_nophoto.jpg"
   useEffect(() => {
     const body = document.querySelector(`body`);
 
@@ -65,14 +66,39 @@ const Cases = ({ caseList, caseCat }: TCaseProps) => {
           {caseList.map((product) => (
             <div className={styles.item} key={product.caseId}>
             <a href={product.uri} className={styles.box}>
-                <p className={styles.img}>
-                  <Image
-                    src={product.featuredImage.node.sourceUrl}
-                    alt=""
-                    width={460}
-                    height={460}
-                  />
-                </p>
+              {
+                product.featuredImage != null ? (
+                  <p className={styles.img}>
+                    <Image
+                      src={product.featuredImage.node.sourceUrl}
+                      alt=""
+                      width={460}
+                      height={460}
+                    />
+                  </p>
+                ) : ( 
+                  product.mainImg.mainImage != null ? (
+                    <p className={styles.img}>
+                      <Image
+                        src={product.mainImg.mainImage.sourceUrl}
+                        alt=""
+                        width={460}
+                        height={460}
+                      />
+                    </p>
+                  ) : (
+                    <p className={styles.img}>
+                      <Image
+                        src={noImg}
+                        alt=""
+                        width={460}
+                        height={460}
+                      />
+                    </p>
+                  )
+                ) 
+              }
+                
                 <div className={styles.txtbox}>
                   <p className={styles.txtcat}>
                     {product.categoriesCase.nodes.map((cat: any) => (
@@ -128,6 +154,11 @@ export const getStaticProps: GetStaticProps = async () => {
                   name
                   uri
                   id
+                }
+              }
+              mainImg {
+                mainImage {
+                  sourceUrl
                 }
               }     
             }

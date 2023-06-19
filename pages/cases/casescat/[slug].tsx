@@ -17,6 +17,7 @@ type TCaseProps = {
 }
 const CaseArchive = ({ caseList, slug, caseCat }: TCaseProps) => {
   console.log(caseCat)
+  let noImg = "/images/common/other/img_nophoto.jpg"
   useEffect(() => {
     const body = document.querySelector(`body`);
 
@@ -66,14 +67,38 @@ const CaseArchive = ({ caseList, slug, caseCat }: TCaseProps) => {
           {caseList.map((item, i) => (
             <div className={styles.item} key={i}>
             <a href={item.uri} className={styles.box}>
-                <p className={styles.img}>
-                  <Image
-                    src={item.featuredImage.node.sourceUrl}
-                    alt=""
-                    width={460}
-                    height={460}
-                  />
-                </p>
+              {
+                item.featuredImage != null ? (
+                  <p className={styles.img}>
+                    <Image
+                      src={item.featuredImage.node.sourceUrl}
+                      alt=""
+                      width={460}
+                      height={460}
+                    />
+                  </p>
+                ) : ( 
+                  item.mainImg.mainImage != null ? (
+                    <p className={styles.img}>
+                      <Image
+                        src={item.mainImg.mainImage.sourceUrl}
+                        alt=""
+                        width={460}
+                        height={460}
+                      />
+                    </p>
+                  ) : (
+                    <p className={styles.img}>
+                      <Image
+                        src={noImg}
+                        alt=""
+                        width={460}
+                        height={460}
+                      />
+                    </p>
+                  )
+                ) 
+            }
                 <div className={styles.txtbox}>
                   <p className={styles.txtcat}>
                     {item.categoriesCase.nodes.map((cat: any) => (
@@ -172,6 +197,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
                       sourceUrl
                     }
                   }
+                  mainImg {
+                    mainImage {
+                      sourceUrl
+                    }
+                  }  
                   categoriesCase {
                     nodes {
                       id
