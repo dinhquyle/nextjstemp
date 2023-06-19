@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { BaseLayout } from "@/components/layouts/BaseLayout/BaseLayout";
 import { FrontLayout } from "@/components/layouts/FrontLayout";
-import { CasebyCat } from "@/common/contexts/AppContext";
+import { CaseCat, CasebyCat } from "@/common/contexts/AppContext";
 import styles from "@/styles/page-styles/Cases.module.scss";
 
 // types
@@ -13,8 +13,10 @@ import { GQL_URI } from "@/common/constants";
 type TCaseProps = {
   caseList: Array<CasebyCat>;
   slug: string;
+  caseCat: Array<CaseCat>;
 }
-const CaseArchive = ({ caseList, slug }: TCaseProps) => {
+const CaseArchive = ({ caseList, slug, caseCat }: TCaseProps) => {
+  console.log(caseCat)
   useEffect(() => {
     const body = document.querySelector(`body`);
 
@@ -55,6 +57,11 @@ const CaseArchive = ({ caseList, slug }: TCaseProps) => {
 
         <section className={styles.masonrybox}>
           <h2 className={`${styles.ttlCommon} ${styles.en}`}>CASES<span><i className={`${styles.fa} ${styles.fa_instagram}`} aria-hidden="true">*</i></span></h2>
+          <div className={styles.listCat}>
+          {caseCat.map((cat: any) => (
+            <p className={`${styles.cat} ${slug==cat.name?styles.active:''}`} key={cat.id}><a href={cat.uri.replace(/dinhquy/g, "cases")}>{cat.name}</a></p>
+          ))}
+          </div>
           <div className={styles.list}>
           {caseList.map((item, i) => (
             <div className={styles.item} key={i}>
@@ -176,6 +183,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
               }
             }
           }
+          catAll: categoriesCase {
+            nodes {
+              id
+              uri
+              name
+            }
+          }
         }`,
         operationName: `getCasesByCategory`,
       })
@@ -189,6 +203,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         props: {
           caseList: data.data.categoriesCase.nodes[0].cases.nodes,
           slug: slug,
+          caseCat: data.data.catAll.nodes,
         }
       }
     } else{
@@ -196,6 +211,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       throw new Error(`Error fetch Cases $(message.message)`);
     }
   } catch(error) {
+    console.log(error)
     return{
       notFound: true,
     }

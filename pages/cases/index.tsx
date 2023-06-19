@@ -17,6 +17,7 @@ type TCaseProps = {
 }
 
 const Cases = ({ caseList, caseCat }: TCaseProps) => {
+  console.log(caseList)
   useEffect(() => {
     const body = document.querySelector(`body`);
 
@@ -110,7 +111,7 @@ export const getStaticProps: GetStaticProps = async () => {
       },
       body: JSON.stringify({
         query: `query getCases {
-          cases {
+          cases(first: 15, after: null) {
             nodes {
               caseId
               title
@@ -132,12 +133,7 @@ export const getStaticProps: GetStaticProps = async () => {
             }
             pageInfo {
               hasNextPage
-              hasPreviousPage
-              offsetPagination {
-                hasMore
-                hasPrevious
-                total
-              }
+              endCursor
             }
           }
           categoriesCase {
@@ -167,6 +163,7 @@ export const getStaticProps: GetStaticProps = async () => {
       throw new Error(`Error fetch Cases $(message.message)`);
     }
   } catch(error) {
+    console.log(error)
     return{
       notFound: true,
     }

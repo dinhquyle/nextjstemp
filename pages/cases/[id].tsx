@@ -32,7 +32,10 @@ const CaseDetail = ({ product }: { product: any}) => {
               <a href="/">ホーム</a>
             </li>
             <li>
-              <span>取引商品・実績</span>
+            <a href="/cases/">取引商品・実績</a>
+            </li>
+            <li>
+              <span>{product[0].title}</span>
             </li>
           </ul>
         </div>

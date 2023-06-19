@@ -158,6 +158,7 @@ Container
     @include PC{
       @include flexbox;
       @include flex-wrap(wrap);
+      justify-content: center;
     }
     .item{
       display: inline-block;
@@ -264,12 +265,28 @@ Container
   a{
     display: inline-block;
     @include font(14, 1, 0.05em);
-    color: #fff;
-    background-color: #03728D;
+    background-color: #fff;
+    border: 1px solid #03728D;
+    color: #03728D;    
     border-radius: 3px;
     padding: 4px 5px 5px;
+    transition: opacity 0.5s, background-color 0.5s;
+    @include HOVER{
+      &:hover{
+        opacity: 1;
+        color: #fff;
+        background-color: #03728D;
+      }
+    }
   }
   .cat{padding: 0 5px;}
+  .active{
+    a{
+      color: #fff;
+      background-color: #03728D;
+      pointer-events: none;
+    }
+  }
 }
 .single{
   .innerbox{
