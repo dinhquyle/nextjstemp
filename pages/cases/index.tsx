@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useEffect } from "react";
+import { gql, useQuery } from "@apollo/client";
 import Head from "next/head";
 import Image from "next/image";
 import { BaseLayout } from "@/components/layouts/BaseLayout/BaseLayout";
@@ -16,9 +17,54 @@ type TCaseProps = {
   caseCat: Array<CaseCat>;
   casePaging: CasePaging;
 }
+
+const GET_POSTS = gql`
+  query getPosts($first: Int!, $after: String) {
+    cases(first: $first, after: $after) {
+      nodes {
+        title
+        content
+        uri
+        date 
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+        categoriesCase {
+          nodes {
+            name
+            uri
+            id
+          }
+        }
+        mainImg {
+          mainImage {
+            sourceUrl
+          }
+        }     
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+        hasPreviousPage
+      }
+    }
+  }
+`;
 const paging = 15;
+
 const Cases = ({ caseList, caseCat, casePaging }: TCaseProps) => {
   console.log(caseList);
+
+  // const { data, loading, error, fetchMore } = useQuery(GET_POSTS, {
+  //   variables: { first: paging, after: null },
+  //   notifyOnNetworkStatusChange: true,
+  // });
+
+  // const posts = data.data.cases.nodes.map((product: any) => product.title);
+  // console.log(posts)
+
   let noImg = "/images/common/other/img_nophoto.jpg"
   useEffect(() => {
     const body = document.querySelector(`body`);
