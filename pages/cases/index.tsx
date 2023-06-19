@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { BaseLayout } from "@/components/layouts/BaseLayout/BaseLayout";
 import { FrontLayout } from "@/components/layouts/FrontLayout";
-import { CaseCat, Casepaging, TProduct } from "@/common/contexts/AppContext";
+import { CaseCat, CasePaging, TProduct } from "@/common/contexts/AppContext";
 import styles from "@/styles/page-styles/Cases.module.scss";
 
 // types
@@ -14,9 +14,10 @@ import { GQL_URI } from "@/common/constants";
 type TCaseProps = {
   caseList: Array<TProduct>;
   caseCat: Array<CaseCat>;
+  casePaging: CasePaging;
 }
-
-const Cases = ({ caseList, caseCat }: TCaseProps) => {
+const paging = 15;
+const Cases = ({ caseList, caseCat, casePaging }: TCaseProps) => {
   console.log(caseList);
   let noImg = "/images/common/other/img_nophoto.jpg"
   useEffect(() => {
@@ -63,8 +64,8 @@ const Cases = ({ caseList, caseCat }: TCaseProps) => {
           ))}
           </div>
           <div className={styles.list}>
-          {caseList.map((product) => (
-            <div className={styles.item} key={product.caseId}>
+          {caseList.map((product, i) => (
+            <div className={styles.item} key={i}>
             <a href={product.uri} className={styles.box}>
               {
                 product.featuredImage != null ? (
@@ -73,7 +74,7 @@ const Cases = ({ caseList, caseCat }: TCaseProps) => {
                       src={product.featuredImage.node.sourceUrl}
                       alt=""
                       width={460}
-                      height={460}
+                      height={320}
                     />
                   </p>
                 ) : ( 
@@ -83,7 +84,7 @@ const Cases = ({ caseList, caseCat }: TCaseProps) => {
                         src={product.mainImg.mainImage.sourceUrl}
                         alt=""
                         width={460}
-                        height={460}
+                        height={320}
                       />
                     </p>
                   ) : (
@@ -92,7 +93,7 @@ const Cases = ({ caseList, caseCat }: TCaseProps) => {
                         src={noImg}
                         alt=""
                         width={460}
-                        height={460}
+                        height={320}
                       />
                     </p>
                   )
@@ -112,6 +113,23 @@ const Cases = ({ caseList, caseCat }: TCaseProps) => {
               </a>
             </div>
           ))}
+          </div>
+          
+          <div className={styles.nextPrevBox}>
+            {
+              casePaging.hasPreviousPage === true ? (
+                <div className={styles.prevBox}><a href="/cases/">Prev</a></div>
+              ) : (
+                <span></span>
+              )
+            }
+            {
+              casePaging.hasNextPage === true ? (
+                <div className={styles.nextBox}><a href="/cases/">Next</a></div>
+              ) : (
+                <span></span>
+              )
+            }   
           </div>
         </section>
 
@@ -136,10 +154,9 @@ export const getStaticProps: GetStaticProps = async () => {
         "content-type": `application/json`,        
       },
       body: JSON.stringify({
-        query: `query getCases {
-          cases(first: 15, after: null) {
+        query: `query getCases($first: Int!, $after: String) {
+          cases(first: $first, after: $after) {
             nodes {
-              caseId
               title
               content
               uri
@@ -165,6 +182,7 @@ export const getStaticProps: GetStaticProps = async () => {
             pageInfo {
               hasNextPage
               endCursor
+              hasPreviousPage
             }
           }
           categoriesCase {
@@ -176,6 +194,10 @@ export const getStaticProps: GetStaticProps = async () => {
           }
         }`,
         operationName: `getCases`,
+        variables: {
+          'first': paging,
+          'after': null
+        }
       })
     });
     if(res.ok){
@@ -187,6 +209,7 @@ export const getStaticProps: GetStaticProps = async () => {
         props: {
           caseList: data.data.cases.nodes,
           caseCat: data.data.categoriesCase.nodes,
+          casePaging: data.data.cases.pageInfo,
         },
       }
     } else{

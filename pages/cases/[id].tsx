@@ -57,8 +57,8 @@ const CaseDetail = ({ product }: { product: any}) => {
                     <Image
                       src={item.featuredImage.node.sourceUrl}
                       alt=""
-                      width={460}
-                      height={460}
+                      width={1020}
+                      height={628}
                     />
                   </p>
                 ) : ( 
@@ -67,8 +67,8 @@ const CaseDetail = ({ product }: { product: any}) => {
                       <Image
                         src={item.mainImg.mainImage.sourceUrl}
                         alt=""
-                        width={460}
-                        height={460}
+                        width={1020}
+                        height={628}
                       />
                     </p>
                   ) : (

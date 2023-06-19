@@ -1,5 +1,4 @@
 export type TProduct = {
-  caseId: number;
   title: string;
   content: string;
   uri: string;
@@ -23,14 +22,10 @@ export type TProduct = {
   }  
 };
 
-export type Casepaging = {
+export type CasePaging = {
   hasNextPage: boolean;
+  endCursor: string;
   hasPreviousPage: boolean;
-  offsetPagination: {
-    hasMore: boolean;
-    hasPrevious: boolean;
-    total: number;
-  }
 };
 
 export type CaseCat = {

@@ -16,7 +16,6 @@ type TCaseProps = {
   caseCat: Array<CaseCat>;
 }
 const CaseArchive = ({ caseList, slug, caseCat }: TCaseProps) => {
-  console.log(caseCat)
   let noImg = "/images/common/other/img_nophoto.jpg"
   useEffect(() => {
     const body = document.querySelector(`body`);
@@ -74,7 +73,7 @@ const CaseArchive = ({ caseList, slug, caseCat }: TCaseProps) => {
                       src={item.featuredImage.node.sourceUrl}
                       alt=""
                       width={460}
-                      height={460}
+                      height={320}
                     />
                   </p>
                 ) : ( 
@@ -84,7 +83,7 @@ const CaseArchive = ({ caseList, slug, caseCat }: TCaseProps) => {
                         src={item.mainImg.mainImage.sourceUrl}
                         alt=""
                         width={460}
-                        height={460}
+                        height={320}
                       />
                     </p>
                   ) : (
@@ -93,7 +92,7 @@ const CaseArchive = ({ caseList, slug, caseCat }: TCaseProps) => {
                         src={noImg}
                         alt=""
                         width={460}
-                        height={460}
+                        height={320}
                       />
                     </p>
                   )
