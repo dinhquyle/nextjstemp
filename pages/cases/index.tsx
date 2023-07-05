@@ -55,15 +55,6 @@ const GET_POSTS = gql`
 const paging = 15;
 
 const Cases = ({ caseList, caseCat, casePaging }: TCaseProps) => {
-  console.log(caseList);
-
-  // const { data, loading, error, fetchMore } = useQuery(GET_POSTS, {
-  //   variables: { first: paging, after: null },
-  //   notifyOnNetworkStatusChange: true,
-  // });
-
-  // const posts = data.data.cases.nodes.map((product: any) => product.title);
-  // console.log(posts)
 
   let noImg = "/images/common/other/img_nophoto.jpg"
   useEffect(() => {
@@ -106,7 +97,7 @@ const Cases = ({ caseList, caseCat, casePaging }: TCaseProps) => {
           <h2 className={`${styles.ttlCommon} ${styles.en}`}>CASES<span><i className={`${styles.fa} ${styles.fa_instagram}`} aria-hidden="true">*</i></span></h2>
           <div className={styles.listCat}>
           {caseCat.map((cat: any) => (
-            <p className={styles.cat} key={cat.id}><a href={cat.uri.replace(/dinhquy/g, "cases")}>{cat.name}</a></p>
+            <p className={styles.cat} key={cat.id}><a href={cat.uri.replace("dinhquy/", "")}>{cat.name}</a></p>
           ))}
           </div>
           <div className={styles.list}>
